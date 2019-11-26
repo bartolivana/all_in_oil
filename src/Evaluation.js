@@ -23,11 +23,11 @@ const Cardstyle = styled.div`
   background: linear-gradient(#88994c, #fff);
   border-radius: 20px;
   box-shadow: 1x 1px 2px #88994c;
-
   text-align: center;
 `
 const Title = styled.h1`
   text-align: center;
+  margin: 20px;
 `
 
 Evaluation.propTypes = {

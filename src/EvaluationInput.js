@@ -1,19 +1,26 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import { create } from 'domain'
 
 export default function EvaluationInput({ onSubmit }) {
   function handleSubmit(event) {
     event.preventDefault()
+    let createId = Math.round(Math.random() * 400)
     const form = event.target
     const { name: nameInput, like: likeInput } = form
-    onSubmit({ name: nameInput.value, like: likeInput.value === 'liked' })
+    console.log(createId)
+    onSubmit({
+      id: createId,
+      name: nameInput.value,
+      like: likeInput.value === 'liked'
+    })
     form.reset()
   }
 
   return (
     <FormWrapper onSubmit={handleSubmit}>
-      <input name="name" placeholder="Name of your Oil" />
+      <input name="name" placeholder="Name of your Oil" required="name" />
       <RadioInputWrapper>
         <input value="liked" type="radio" name="like" id="like" />
         <label htmlFor="like">Like</label>
