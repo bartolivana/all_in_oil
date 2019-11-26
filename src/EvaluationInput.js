@@ -8,6 +8,7 @@ export default function EvaluationInput({ onSubmit }) {
     const form = event.target
     const { name: nameInput, like: likeInput } = form
     onSubmit({ name: nameInput.value, like: likeInput.value === 'liked' })
+    form.reset()
   }
 
   return (

@@ -3,7 +3,10 @@ import EvaluationInput from './EvaluationInput'
 import Evaluation from './Evaluation'
 
 function App() {
-  const [cards, setCards] = useState([])
+  let evalDataFromLocalStorage = JSON.parse(localStorage.getItem('cards')) || []
+  const [cards, setCards] = useState([evalDataFromLocalStorage])
+  saveEvaluationToLocalStorage()
+
   return (
     <div className="App">
       <EvaluationInput onSubmit={handleFormSubmit} />
@@ -15,6 +18,10 @@ function App() {
 
   function handleFormSubmit(data) {
     setCards([...cards, data])
+  }
+
+  function saveEvaluationToLocalStorage() {
+    localStorage.setItem('cards', JSON.stringify(cards))
   }
 }
 
