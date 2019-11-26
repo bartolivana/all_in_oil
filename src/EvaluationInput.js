@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import { create } from 'domain'
 
 export default function EvaluationInput({ onSubmit }) {
   function handleSubmit(event) {
@@ -20,7 +19,7 @@ export default function EvaluationInput({ onSubmit }) {
 
   return (
     <FormWrapper onSubmit={handleSubmit}>
-      <input name="name" placeholder="Name of your Oil" required="name" />
+      <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
       <RadioInputWrapper>
         <input value="liked" type="radio" name="like" id="like" />
         <label htmlFor="like">Like</label>
@@ -31,6 +30,13 @@ export default function EvaluationInput({ onSubmit }) {
     </FormWrapper>
   )
 }
+
+const SimpleInput = styled.input`
+  border: none;
+  font-size: 19px;
+  text-align: center;
+  opacity: 0.4;
+`
 const RadioInputWrapper = styled.div`
   margin: 20px;
   display: grid;
@@ -41,11 +47,6 @@ const RadioInputWrapper = styled.div`
     color: #88994c;
   }
 `
-/* const OilName = styled.output`
-  margin-top: 10px;
-  padding: 5px 20px;
-  font-size: 17px;
-` */
 const BtnSave = styled.button`
   margin-top: 10px;
   padding: 5px 30px;
