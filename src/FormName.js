@@ -3,39 +3,20 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
 export default function FormName({ onSubmit }) {
-  const [name, setName] = useState('')
-  const [like, setLike] = useState('')
-
   function handleSubmit(event) {
     event.preventDefault()
-    onSubmit({ name, like: like === 'liked' })
+    const form = event.target
+    const { name: nameInput, like: likeInput } = form
+    onSubmit({ name: nameInput.value, like: likeInput.value === 'liked' })
   }
 
   return (
     <FormWrapper onSubmit={handleSubmit}>
-      <input
-        onChange={event => setName(event.target.value)}
-        value={name}
-        placeholder="Name of your Oil"
-      />
+      <input name="name" placeholder="Name of your Oil" />
       <RadioInputWrapper>
-        <input
-          onChange={() => setLike('liked')}
-          value="liked"
-          checked={like === 'liked'}
-          type="radio"
-          name="like"
-          id="like"
-        />
+        <input value="liked" type="radio" name="like" id="like" />
         <label htmlFor="like">Like</label>
-        <input
-          onChange={() => setLike('disliked')}
-          value="disliked"
-          checked={like === 'disliked'}
-          type="radio"
-          name="like"
-          id="dislike"
-        />
+        <input value="disliked" type="radio" name="like" id="dislike" />
         <label htmlFor="dislike">Dislike</label>
       </RadioInputWrapper>
       <BtnSave>Save</BtnSave>
