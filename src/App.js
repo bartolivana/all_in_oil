@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import EvaluationInput from './EvaluationInput'
+import Evaluation from './Evaluation'
 
 function App() {
+  localStorage.clear()
+  let evalDataFromLocalStorage = JSON.parse(localStorage.getItem('cards'))
+  const [cards, setCards] = useState(evalDataFromLocalStorage || [])
+  saveEvaluationToLocalStorage()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <EvaluationInput onSubmit={handleFormSubmit} />
+      {cards.map(card => (
+        <Evaluation {...card} key={card.id} />
+      ))}
     </div>
-  );
+  )
+
+  function handleFormSubmit(data) {
+    setCards([...cards, data])
+  }
+
+  function saveEvaluationToLocalStorage() {
+    localStorage.setItem('cards', JSON.stringify(cards))
+  }
 }
 
-export default App;
+export default App
