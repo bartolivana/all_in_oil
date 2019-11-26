@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
 export default function EvaluationInput({ onSubmit }) {
   function handleSubmit(event) {
     event.preventDefault()
-    let createId = Math.round(Math.random() * 400)
+    let newId = Math.round(Math.random() * 400)
     const form = event.target
     const { name: nameInput, like: likeInput } = form
-    console.log(createId)
+
     onSubmit({
-      id: createId,
+      id: newId,
       name: nameInput.value,
       like: likeInput.value === 'liked'
     })
@@ -31,6 +31,13 @@ export default function EvaluationInput({ onSubmit }) {
   )
 }
 
+const FormWrapper = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px auto;
+`
 const SimpleInput = styled.input`
   border: none;
   font-size: 19px;
@@ -55,13 +62,6 @@ const BtnSave = styled.button`
   border-radius: 10px;
   background: linear-gradient(#88994c, #fff);
   font-family: monospace;
-`
-const FormWrapper = styled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 20px auto;
 `
 
 EvaluationInput.propTypes = {
