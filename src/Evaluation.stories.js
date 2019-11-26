@@ -1,20 +1,20 @@
 import React from 'react'
 import { text, boolean } from '@storybook/addon-knobs'
-import CardName from './CardName'
+import Evaluation from './Evaluation'
 
 export default {
-  title: 'CardName'
+  title: 'Evaluation'
 }
 
 export const liked = () => (
-  <CardName
-    name={text('Name', 'Leiccno')}
+  <Evaluation
+    name={text('Name', 'Leccino')}
     like={boolean('Like', true)}
-  ></CardName>
+  ></Evaluation>
 )
 export const disliked = () => (
-  <CardName
-    name={text('Name', 'Leiccno')}
+  <Evaluation
+    name={text('Name', 'Leccino')}
     like={boolean('Like', false)}
-  ></CardName>
+  ></Evaluation>
 )

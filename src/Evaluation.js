@@ -2,14 +2,16 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
-export default function CardName(card) {
+export default function Evaluation(card) {
   return (
     <Cardstyle>
+      <Title>{card.name}</Title>
       You've tasted {card.name} and {card.like ? 'liked' : 'disliked'} it!
     </Cardstyle>
   )
 }
-CardName.propTypes = {
+
+Evaluation.propTypes = {
   name: PropTypes.string.isRequired,
   like: PropTypes.bool
 }
@@ -26,5 +28,8 @@ const Cardstyle = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 20px auto;
+  text-align: center;
+`
+const Title = styled.h1`
   text-align: center;
 `

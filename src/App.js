@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import FormName from './FormName'
-import CardName from './CardName'
+import EvaluationInput from './EvaluationInput'
+import Evaluation from './Evaluation'
 
 function App() {
   const [cards, setCards] = useState([])
   return (
     <div className="App">
-      <FormName onSubmit={handleFormSubmit} />
+      <EvaluationInput onSubmit={handleFormSubmit} />
       {cards.map(card => (
-        <CardName {...card} />
+        <Evaluation {...card} />
       ))}
     </div>
   )

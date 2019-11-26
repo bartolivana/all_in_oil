@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
-export default function FormName({ onSubmit }) {
+export default function EvaluationInput({ onSubmit }) {
   function handleSubmit(event) {
     event.preventDefault()
     const form = event.target
@@ -55,6 +55,6 @@ const FormWrapper = styled.form`
   margin: 20px auto;
 `
 
-FormName.propTypes = {
+EvaluationInput.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
