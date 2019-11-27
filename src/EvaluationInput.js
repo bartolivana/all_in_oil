@@ -20,6 +20,29 @@ export default function EvaluationInput({ onSubmit }) {
   return (
     <FormWrapper onSubmit={handleSubmit}>
       <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
+
+      <FragrantInputWrapper>
+        <InputFraigrant value="" type="checkbox" name="fragraint" id="hay" />
+        <LabelFragrant for="hay">Hay</LabelFragrant>
+
+        <InputFraigrant value="" type="checkbox" name="fragraint" id="apple" />
+        <LabelFragrant for="apple">Apple</LabelFragrant>
+
+        <InputFraigrant value="" type="checkbox" name="fragraint" id="almond" />
+        <LabelFragrant for="almond">Almond</LabelFragrant>
+
+        <InputFraigrant
+          value=""
+          type="checkbox"
+          name="fragraint"
+          id="artichoke"
+        />
+        <LabelFragrant for="artichoke">Artichokes</LabelFragrant>
+
+        <InputFraigrant value="" type="checkbox" name="fragraint" id="fruit" />
+        <LabelFragrant for="fruit">Fruit</LabelFragrant>
+      </FragrantInputWrapper>
+
       <RadioInputWrapper>
         <input value="liked" type="radio" name="like" id="like" />
         <label htmlFor="like">Like</label>
@@ -30,6 +53,29 @@ export default function EvaluationInput({ onSubmit }) {
     </FormWrapper>
   )
 }
+
+const FragrantInputWrapper = styled.div`
+  margin: 20px;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 20px;
+  font-size: 17px;
+  input:checked + label {
+    background: linear-gradient(#88994c, #fff);
+    content: '<';
+  }
+`
+const InputFraigrant = styled.input`
+  display: none;
+`
+const LabelFragrant = styled.label`
+  padding: 10px;
+  margin: 0;
+  background: linear-gradient(#d1d1d1, #fff);
+  border-radius: 10px;
+  text-align: center;
+  width: 150px;
+`
 
 const FormWrapper = styled.form`
   display: flex;
@@ -44,6 +90,7 @@ const SimpleInput = styled.input`
   text-align: center;
   opacity: 0.4;
 `
+
 const RadioInputWrapper = styled.div`
   margin: 20px;
   display: grid;

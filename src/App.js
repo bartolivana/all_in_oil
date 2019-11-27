@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <EvaluationInput onSubmit={handleFormSubmit} />
+
       {cards.map(card => (
         <Evaluation {...card} key={card.id} />
       ))}
