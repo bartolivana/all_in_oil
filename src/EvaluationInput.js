@@ -7,12 +7,17 @@ export default function EvaluationInput({ onSubmit }) {
     event.preventDefault()
     let newId = Math.round(Math.random() * 400)
     const form = event.target
-    const { name: nameInput, like: likeInput, fragraint: fragraintInput } = form
+    const {
+      name: nameInput,
+      like: likeInput,
+      hay: hayInput,
+      apple: appleInput
+    } = form
 
     onSubmit({
       id: newId,
       name: nameInput.value,
-      fragraint: fragraintInput.value,
+      fragraint: [hayInput.checked ? hayInput.value : null, appleInput.value],
       like: likeInput.value === 'liked'
     })
     form.reset()
@@ -23,28 +28,28 @@ export default function EvaluationInput({ onSubmit }) {
       <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
       <>
         <FragrantInputWrapper>
-          <InputFraigrant value="hay" type="radio" name="fragraint" id="hay" />
+          <InputFraigrant value="hay" type="checkbox" name="hay" id="hay" />
           <LabelFragrant htmlFor="hay">Hay</LabelFragrant>
 
           <InputFraigrant
             value="apple"
-            type="radio"
-            name="fragraint"
+            type="checkbox"
+            name="apple"
             id="apple"
           />
           <LabelFragrant htmlFor="apple">Apple</LabelFragrant>
 
           <InputFraigrant
             value="almond"
-            type="radio"
-            name="fragraint"
+            type="checkbox"
+            name="almond"
             id="almond"
           />
           <LabelFragrant htmlFor="almond">Almond</LabelFragrant>
 
           <InputFraigrant
             value="artichoke"
-            type="radio"
+            type="checkbox"
             name="fragraint"
             id="artichoke"
           />
@@ -52,7 +57,7 @@ export default function EvaluationInput({ onSubmit }) {
 
           <InputFraigrant
             value="fruit"
-            type="radio"
+            type="checkbox"
             name="fragraint"
             id="fruit"
           />
