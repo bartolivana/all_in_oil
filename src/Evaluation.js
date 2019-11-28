@@ -6,7 +6,8 @@ export default function Evaluation(card) {
   return (
     <Cardstyle>
       <Title>{card.name}</Title>
-      You've tasted {card.name} and {card.like ? 'liked' : 'disliked'} it!
+      You've tasted {card.name} and generally {card.like ? 'liked' : 'disliked'}{' '}
+      it! {<p>Fragrance nuances: {card.fragrant}.</p>}
     </Cardstyle>
   )
 }

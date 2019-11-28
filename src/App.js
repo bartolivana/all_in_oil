@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import EvaluationInput from './EvaluationInput'
 import Evaluation from './Evaluation'
-
+import DecorationImg from './img/BackgroundBlur.svg'
 function App() {
   localStorage.clear()
   let evalDataFromLocalStorage = JSON.parse(localStorage.getItem('cards'))
@@ -10,7 +10,9 @@ function App() {
 
   return (
     <div className="App">
+      <img src={DecorationImg} alt="background" width="100px" height="100px" />
       <EvaluationInput onSubmit={handleFormSubmit} />
+
       {cards.map(card => (
         <Evaluation {...card} key={card.id} />
       ))}
