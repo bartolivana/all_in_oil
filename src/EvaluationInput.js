@@ -11,13 +11,20 @@ export default function EvaluationInput({ onSubmit }) {
       name: nameInput,
       like: likeInput,
       hay: hayInput,
-      apple: appleInput
+      apple: appleInput,
+      almond: almondInput,
+      artichoke: artichokeInput,
+      fruit: fruitInput
     } = form
 
     onSubmit({
       id: newId,
       name: nameInput.value,
-      fragraint: [hayInput.checked ? hayInput.value : null, appleInput.value],
+      fragraint: [
+        hayInput.checked ? hayInput.value : '',
+        appleInput.checked ? appleInput.value : '',
+        almondInput.checked ? almondInput.value : ''
+      ],
       like: likeInput.value === 'liked'
     })
     form.reset()
@@ -28,13 +35,18 @@ export default function EvaluationInput({ onSubmit }) {
       <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
       <>
         <FragrantInputWrapper>
-          <InputFraigrant value="hay" type="checkbox" name="hay" id="hay" />
+          <InputFraigrant
+            value="hay"
+            type="checkbox"
+            name="fragraint"
+            id="hay"
+          />
           <LabelFragrant htmlFor="hay">Hay</LabelFragrant>
 
           <InputFraigrant
             value="apple"
             type="checkbox"
-            name="apple"
+            name="fraigrant"
             id="apple"
           />
           <LabelFragrant htmlFor="apple">Apple</LabelFragrant>
@@ -42,7 +54,7 @@ export default function EvaluationInput({ onSubmit }) {
           <InputFraigrant
             value="almond"
             type="checkbox"
-            name="almond"
+            name="fragraint"
             id="almond"
           />
           <LabelFragrant htmlFor="almond">Almond</LabelFragrant>
