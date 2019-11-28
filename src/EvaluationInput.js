@@ -17,7 +17,7 @@ export default function EvaluationInput({ onSubmit }) {
       fruit: fruitInput
     } = form
 
-    const array = [
+    const fragrantArray = [
       hayInput.checked ? hayInput.value : '',
       appleInput.checked ? appleInput.value : '',
       almondInput.checked ? almondInput.value : '',
@@ -28,7 +28,10 @@ export default function EvaluationInput({ onSubmit }) {
     onSubmit({
       id: newId,
       name: nameInput.value,
-      fragraint: array.filter(fr => fr !== '').map(fr => fr),
+      fragraint: fragrantArray
+        .filter(fr => fr !== '')
+        .map(fr => fr)
+        .join(),
       like: likeInput.value === 'liked'
     })
     form.reset()
@@ -37,49 +40,43 @@ export default function EvaluationInput({ onSubmit }) {
   return (
     <FormWrapper onSubmit={handleSubmit}>
       <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
-      <>
-        <FragrantInputWrapper>
-          <InputFraigrant
-            value="hay"
-            type="checkbox"
-            name="fragraint"
-            id="hay"
-          />
-          <LabelFragrant htmlFor="hay">Hay</LabelFragrant>
 
-          <InputFraigrant
-            value="apple"
-            type="checkbox"
-            name="fraigrant"
-            id="apple"
-          />
-          <LabelFragrant htmlFor="apple">Apple</LabelFragrant>
+      <FragrantInputWrapper>
+        <InputFraigrant value="hay" type="checkbox" name="fragraint" id="hay" />
+        <LabelFragrant htmlFor="hay">Hay</LabelFragrant>
 
-          <InputFraigrant
-            value="almond"
-            type="checkbox"
-            name="fragraint"
-            id="almond"
-          />
-          <LabelFragrant htmlFor="almond">Almond</LabelFragrant>
+        <InputFraigrant
+          value="apple"
+          type="checkbox"
+          name="fraigrant"
+          id="apple"
+        />
+        <LabelFragrant htmlFor="apple">Apple</LabelFragrant>
 
-          <InputFraigrant
-            value="artichoke"
-            type="checkbox"
-            name="fragraint"
-            id="artichoke"
-          />
-          <LabelFragrant htmlFor="artichoke">Artichoke</LabelFragrant>
+        <InputFraigrant
+          value="almond"
+          type="checkbox"
+          name="fragraint"
+          id="almond"
+        />
+        <LabelFragrant htmlFor="almond">Almond</LabelFragrant>
 
-          <InputFraigrant
-            value="fruit"
-            type="checkbox"
-            name="fragraint"
-            id="fruit"
-          />
-          <LabelFragrant htmlFor="fruit">Fruit</LabelFragrant>
-        </FragrantInputWrapper>
-      </>
+        <InputFraigrant
+          value="artichoke"
+          type="checkbox"
+          name="fragraint"
+          id="artichoke"
+        />
+        <LabelFragrant htmlFor="artichoke">Artichoke</LabelFragrant>
+
+        <InputFraigrant
+          value="fruit"
+          type="checkbox"
+          name="fragraint"
+          id="fruit"
+        />
+        <LabelFragrant htmlFor="fruit">Fruit</LabelFragrant>
+      </FragrantInputWrapper>
 
       <RadioInputWrapper>
         <input value="liked" type="radio" name="like" id="like" />
