@@ -28,7 +28,7 @@ export default function EvaluationInput({ onSubmit }) {
     onSubmit({
       id: newId,
       name: nameInput.value,
-      fragraint: fragrantArray
+      fragrant: fragrantArray
         .filter(fr => fr !== '')
         .map(fr => fr)
         .join(),
@@ -42,10 +42,10 @@ export default function EvaluationInput({ onSubmit }) {
       <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
 
       <FragrantInputWrapper>
-        <InputFraigrant value="hay" type="checkbox" name="fragraint" id="hay" />
+        <InputFragrant value="hay" type="checkbox" name="fragraint" id="hay" />
         <LabelFragrant htmlFor="hay">Hay</LabelFragrant>
 
-        <InputFraigrant
+        <InputFragrant
           value="apple"
           type="checkbox"
           name="fraigrant"
@@ -53,7 +53,7 @@ export default function EvaluationInput({ onSubmit }) {
         />
         <LabelFragrant htmlFor="apple">Apple</LabelFragrant>
 
-        <InputFraigrant
+        <InputFragrant
           value="almond"
           type="checkbox"
           name="fragraint"
@@ -61,7 +61,7 @@ export default function EvaluationInput({ onSubmit }) {
         />
         <LabelFragrant htmlFor="almond">Almond</LabelFragrant>
 
-        <InputFraigrant
+        <InputFragrant
           value="artichoke"
           type="checkbox"
           name="fragraint"
@@ -69,7 +69,7 @@ export default function EvaluationInput({ onSubmit }) {
         />
         <LabelFragrant htmlFor="artichoke">Artichoke</LabelFragrant>
 
-        <InputFraigrant
+        <InputFragrant
           value="fruit"
           type="checkbox"
           name="fragraint"
@@ -101,7 +101,7 @@ const FragrantInputWrapper = styled.div`
   }
 `
 
-const InputFraigrant = styled.input`
+const InputFragrant = styled.input`
   display: none;
 `
 const LabelFragrant = styled.label`
