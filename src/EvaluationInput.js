@@ -17,14 +17,18 @@ export default function EvaluationInput({ onSubmit }) {
       fruit: fruitInput
     } = form
 
+    const array = [
+      hayInput.checked ? hayInput.value : '',
+      appleInput.checked ? appleInput.value : '',
+      almondInput.checked ? almondInput.value : '',
+      artichokeInput.checked ? artichokeInput.value : '',
+      fruitInput.checked ? fruitInput.value : ''
+    ]
+
     onSubmit({
       id: newId,
       name: nameInput.value,
-      fragraint: [
-        hayInput.checked ? hayInput.value : '',
-        appleInput.checked ? appleInput.value : '',
-        almondInput.checked ? almondInput.value : ''
-      ],
+      fragraint: array.filter(fr => fr !== '').map(fr => fr),
       like: likeInput.value === 'liked'
     })
     form.reset()
