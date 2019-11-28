@@ -21,43 +21,44 @@ export default function EvaluationInput({ onSubmit }) {
   return (
     <FormWrapper onSubmit={handleSubmit}>
       <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
+      <>
+        <FragrantInputWrapper>
+          <InputFraigrant value="hay" type="radio" name="fragraint" id="hay" />
+          <LabelFragrant htmlFor="hay">Hay</LabelFragrant>
 
-      <FragrantInputWrapper>
-        <InputFraigrant value="hay" type="radio" name="fragraint" id="hay" />
-        <LabelFragrant htmlFor="hay">Hay</LabelFragrant>
+          <InputFraigrant
+            value="apple"
+            type="radio"
+            name="fragraint"
+            id="apple"
+          />
+          <LabelFragrant htmlFor="apple">Apple</LabelFragrant>
 
-        <InputFraigrant
-          value="apple"
-          type="radio"
-          name="fragraint"
-          id="apple"
-        />
-        <LabelFragrant htmlFor="apple">Apple</LabelFragrant>
+          <InputFraigrant
+            value="almond"
+            type="radio"
+            name="fragraint"
+            id="almond"
+          />
+          <LabelFragrant htmlFor="almond">Almond</LabelFragrant>
 
-        <InputFraigrant
-          value="almond"
-          type="radio"
-          name="fragraint"
-          id="almond"
-        />
-        <LabelFragrant htmlFor="almond">Almond</LabelFragrant>
+          <InputFraigrant
+            value="artichoke"
+            type="radio"
+            name="fragraint"
+            id="artichoke"
+          />
+          <LabelFragrant htmlFor="artichoke">Artichoke</LabelFragrant>
 
-        <InputFraigrant
-          value="artichoke"
-          type="radio"
-          name="fragraint"
-          id="artichoke"
-        />
-        <LabelFragrant htmlFor="artichoke">Artichoke</LabelFragrant>
-
-        <InputFraigrant
-          value="fruit"
-          type="radio"
-          name="fragraint"
-          id="fruit"
-        />
-        <LabelFragrant htmlFor="fruit">Fruit</LabelFragrant>
-      </FragrantInputWrapper>
+          <InputFraigrant
+            value="fruit"
+            type="radio"
+            name="fragraint"
+            id="fruit"
+          />
+          <LabelFragrant htmlFor="fruit">Fruit</LabelFragrant>
+        </FragrantInputWrapper>
+      </>
 
       <RadioInputWrapper>
         <input value="liked" type="radio" name="like" id="like" />
@@ -73,7 +74,7 @@ export default function EvaluationInput({ onSubmit }) {
 const FragrantInputWrapper = styled.div`
   margin: 20px;
   display: grid;
-  grid-template-columns: 100px 100px;
+  grid-template-columns: 100px 100px 100px;
   grid-template-rows: 1 fr 1fr 1fr;
   gap: 15px;
   font-size: 17px;
@@ -99,7 +100,7 @@ const FormWrapper = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 20px auto;
+  margin: 30px auto;
 `
 const SimpleInput = styled.input`
   border: none;
