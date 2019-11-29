@@ -39,15 +39,16 @@ export default function EvaluationInput({ onSubmit }) {
       name: nameInput.value,
       fragrant: fragrantArray
         .filter(fr => fr !== '')
-        .map(fr => fr)
-        .join(),
+        /* .map(fr => fr) */
+        .join(' '),
       taste: tasteArray
         .filter(ta => ta !== '')
-        .map(ta => ta)
-        .join(),
+        /*  .map(ta => ta) */
+        .join(' '),
       like: likeInput.value === 'liked'
     })
     form.reset()
+    form.querySelector('[name]')
   }
 
   return (
