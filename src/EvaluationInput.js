@@ -14,8 +14,17 @@ export default function EvaluationInput({ onSubmit }) {
       apple: appleInput,
       almond: almondInput,
       artichoke: artichokeInput,
-      fruit: fruitInput
+      fruit: fruitInput,
+      bitter: bitterInput,
+      spicy: spicyInput,
+      astringent: astringentInput
     } = form
+
+    const tasteArray = [
+      bitterInput.checked ? bitterInput.value : '',
+      spicyInput.checked ? spicyInput.value : '',
+      astringentInput.checked ? astringentInput.value : ''
+    ]
 
     const fragrantArray = [
       hayInput.checked ? hayInput.value : '',
@@ -32,6 +41,10 @@ export default function EvaluationInput({ onSubmit }) {
         .filter(fr => fr !== '')
         .map(fr => fr)
         .join(),
+      taste: tasteArray
+        .filter(ta => ta !== '')
+        .map(ta => ta)
+        .join(),
       like: likeInput.value === 'liked'
     })
     form.reset()
@@ -42,41 +55,42 @@ export default function EvaluationInput({ onSubmit }) {
       <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
 
       <FragrantInputWrapper>
-        <InputFragrant value="hay" type="checkbox" name="fragraint" id="hay" />
-        <LabelFragrant htmlFor="hay">Hay</LabelFragrant>
+        <InputTag value="hay" type="checkbox" name="fragraint" id="hay" />
+        <LabelTag htmlFor="hay">Hay</LabelTag>
 
-        <InputFragrant
-          value="apple"
-          type="checkbox"
-          name="fraigrant"
-          id="apple"
-        />
-        <LabelFragrant htmlFor="apple">Apple</LabelFragrant>
+        <InputTag value="apple" type="checkbox" name="fraigrant" id="apple" />
+        <LabelTag htmlFor="apple">Apple</LabelTag>
 
-        <InputFragrant
-          value="almond"
-          type="checkbox"
-          name="fragraint"
-          id="almond"
-        />
-        <LabelFragrant htmlFor="almond">Almond</LabelFragrant>
+        <InputTag value="almond" type="checkbox" name="fragraint" id="almond" />
+        <LabelTag htmlFor="almond">Almond</LabelTag>
 
-        <InputFragrant
+        <InputTag
           value="artichoke"
           type="checkbox"
           name="fragraint"
           id="artichoke"
         />
-        <LabelFragrant htmlFor="artichoke">Artichoke</LabelFragrant>
+        <LabelTag htmlFor="artichoke">Artichoke</LabelTag>
 
-        <InputFragrant
-          value="fruit"
-          type="checkbox"
-          name="fragraint"
-          id="fruit"
-        />
-        <LabelFragrant htmlFor="fruit">Fruit</LabelFragrant>
+        <InputTag value="fruit" type="checkbox" name="fragraint" id="fruit" />
+        <LabelTag htmlFor="fruit">Fruit</LabelTag>
       </FragrantInputWrapper>
+
+      <TasteInputWrapper>
+        <InputTag value="bitter" type="checkbox" name="taste" id="bitter" />
+        <LabelTag htmlFor="bitter">Bitter</LabelTag>
+
+        <InputTag value="spicy" type="checkbox" name="taste" id="spicy" />
+        <LabelTag htmlFor="spicy">Spicy</LabelTag>
+
+        <InputTag
+          value="astringent"
+          type="checkbox"
+          name="taste"
+          id="astringent"
+        />
+        <LabelTag htmlFor="astringent">Astringent</LabelTag>
+      </TasteInputWrapper>
 
       <RadioInputWrapper>
         <input value="liked" type="radio" name="like" id="like" />
@@ -88,11 +102,22 @@ export default function EvaluationInput({ onSubmit }) {
     </FormWrapper>
   )
 }
+const TasteInputWrapper = styled.div`
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 110px 110px 110px;
+  grid-template-rows: 1fr 1fr;
+  gap: 15px;
+  font-size: 17px;
+  input:checked + label {
+    background: linear-gradient(0.25turn, #88994c, #d1d1d1, #fff);
+  }
+`
 
 const FragrantInputWrapper = styled.div`
   margin: 20px;
   display: grid;
-  grid-template-columns: 100px 100px 100px;
+  grid-template-columns: 100px 100px;
   grid-template-rows: 1 fr 1fr 1fr;
   gap: 15px;
   font-size: 17px;
@@ -101,16 +126,16 @@ const FragrantInputWrapper = styled.div`
   }
 `
 
-const InputFragrant = styled.input`
+const InputTag = styled.input`
   display: none;
 `
-const LabelFragrant = styled.label`
+const LabelTag = styled.label`
   padding: 10px;
   margin: 0;
   background: linear-gradient(#d1d1d1, #fff);
   border-radius: 25px;
   text-align: center;
-  width: 110px;
+  width: 115px;
 `
 
 const FormWrapper = styled.form`
