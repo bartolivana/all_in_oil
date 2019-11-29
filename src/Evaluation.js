@@ -7,7 +7,8 @@ export default function Evaluation(card) {
     <Cardstyle>
       <Title>{card.name}</Title>
       You've tasted {card.name} and generally {card.like ? 'liked' : 'disliked'}{' '}
-      it! {<p>Fragrance nuances: {card.fragrant}.</p>}
+      it! {<p>Fragrance nuances: {card.fragrant}.</p>}{' '}
+      <p>Taste nuances: {card.taste}.</p>
     </Cardstyle>
   )
 }
@@ -19,7 +20,7 @@ const Cardstyle = styled.div`
   flex-direction: column;
   margin: 20px auto;
   width: 300px;
-  height: 200px;
+
   opacity: 0.8;
   background: linear-gradient(#88994c, #fff);
   border-radius: 20px;
