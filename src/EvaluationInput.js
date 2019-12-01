@@ -116,7 +116,7 @@ const TasteInputWrapper = styled.div`
 `
 
 const FragrantInputWrapper = styled.div`
-  margin: 20px;
+  margin: 10px;
   display: grid;
   grid-template-columns: 100px 100px;
   grid-template-rows: 1 fr 1fr 1fr;
@@ -144,17 +144,19 @@ const FormWrapper = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 30px auto;
+  margin: 10px auto;
 `
 const SimpleInput = styled.input`
   border: none;
   font-size: 19px;
   text-align: center;
   opacity: 0.4;
+  margin-bottom: 20px;
+  background: #f5f5f5;
 `
 
 const RadioInputWrapper = styled.div`
-  margin: 20px;
+  margin: 10px;
   display: grid;
   grid-auto-flow: column;
   gap: 20px;

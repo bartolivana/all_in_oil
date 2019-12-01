@@ -9,5 +9,6 @@ export default createGlobalStyle`
     margin: 0;
     font-family: monospace;
     font-size: 18px;
+    background-color:#F5F5F5;
   }
 `
