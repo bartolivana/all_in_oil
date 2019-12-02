@@ -7,11 +7,11 @@ export default function Evaluation(card) {
     <Cardstyle>
       <Title>{card.name}</Title>
       You've tasted {card.name} and generally {card.like ? 'liked' : 'disliked'}{' '}
-      it! {<p>Fragrance nuances: {card.fragrant}.</p>}{' '}
-      <p>Taste nuances: {card.taste}.</p>
+      it! {<p>Fragrance nuances: {card.fragrants.join(', ')}.</p>}{' '}
+      <p>Taste nuances: {card.taste.join(', ')}.</p>
       <p>
-        The information you gathered: {card.producer} {card.region}{' '}
-        {card.vintage} {card.classification} {card.cultivar}
+        The information you gathered: {card.producer}, {card.region}{' '}
+        {card.vintage}, {card.classification}, {card.cultivar}
       </p>
     </Cardstyle>
   )
