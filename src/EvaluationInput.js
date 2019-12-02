@@ -17,7 +17,12 @@ export default function EvaluationInput({ onSubmit }) {
       fruit: fruitInput,
       bitter: bitterInput,
       spicy: spicyInput,
-      astringent: astringentInput
+      astringent: astringentInput,
+      producer: producerInput,
+      region: regionInput,
+      vintage: vintageInput,
+      classification: classificationInput,
+      cultivar: cultivarInput
     } = form
 
     const tasteArray = [
@@ -37,15 +42,14 @@ export default function EvaluationInput({ onSubmit }) {
     onSubmit({
       id: newId,
       name: nameInput.value,
-      fragrant: fragrantArray
-        .filter(fr => fr !== '')
-        .map(fr => fr)
-        .join(),
-      taste: tasteArray
-        .filter(ta => ta !== '')
-        .map(ta => ta)
-        .join(),
-      like: likeInput.value === 'liked'
+      fragrant: fragrantArray.filter(fr => fr !== '').join(' '),
+      taste: tasteArray.filter(ta => ta !== '').join(' '),
+      like: likeInput.value === 'liked',
+      producer: producerInput.value,
+      region: regionInput.value,
+      vintage: vintageInput.value,
+      classification: classificationInput.value,
+      cultivar: cultivarInput.value
     })
     form.reset()
   }
@@ -55,24 +59,24 @@ export default function EvaluationInput({ onSubmit }) {
       <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
 
       <FragrantInputWrapper>
-        <InputTag value="hay" type="checkbox" name="fragraint" id="hay" />
+        <InputTag value="hay" type="checkbox" name="fragrant" id="hay" />
         <LabelTag htmlFor="hay">Hay</LabelTag>
 
         <InputTag value="apple" type="checkbox" name="fraigrant" id="apple" />
         <LabelTag htmlFor="apple">Apple</LabelTag>
 
-        <InputTag value="almond" type="checkbox" name="fragraint" id="almond" />
+        <InputTag value="almond" type="checkbox" name="fragrant" id="almond" />
         <LabelTag htmlFor="almond">Almond</LabelTag>
 
         <InputTag
           value="artichoke"
           type="checkbox"
-          name="fragraint"
+          name="fragrant"
           id="artichoke"
         />
         <LabelTag htmlFor="artichoke">Artichoke</LabelTag>
 
-        <InputTag value="fruit" type="checkbox" name="fragraint" id="fruit" />
+        <InputTag value="fruit" type="checkbox" name="fragrant" id="fruit" />
         <LabelTag htmlFor="fruit">Fruit</LabelTag>
       </FragrantInputWrapper>
 
@@ -92,6 +96,48 @@ export default function EvaluationInput({ onSubmit }) {
         <LabelTag htmlFor="astringent">Astringent</LabelTag>
       </TasteInputWrapper>
 
+      <InfoInputWrapper>
+        <label htmlFor="producer">Producer</label>
+        <InfoInput
+          type="text"
+          name="producer"
+          id="producer"
+          placeholder="e.g. Giacomo Grassi"
+        />
+
+        <label htmlFor="region">Country/Region</label>
+        <InfoInput
+          type="text"
+          name="region"
+          id="region"
+          placeholder="e.g. Italy, Tuscany"
+        />
+
+        <label htmlFor="vintage">Vintage</label>
+        <InfoInput
+          type="text"
+          name="vintage"
+          id="vintage"
+          placeholder="e.g. 2016"
+        />
+
+        <label htmlFor="classification">Classification</label>
+        <InfoInput
+          type="text"
+          name="classification"
+          id="classification"
+          placeholder="e.g. Extra Virgin Olive Oil "
+        />
+
+        <label htmlFor="cultivar">Cultivars</label>
+        <InfoInput
+          type="text"
+          name="cultivar"
+          id="cultivar"
+          placeholder="e.g. Pendolino"
+        />
+      </InfoInputWrapper>
+
       <RadioInputWrapper>
         <input value="liked" type="radio" name="like" id="like" />
         <label htmlFor="like">Like</label>
@@ -102,20 +148,24 @@ export default function EvaluationInput({ onSubmit }) {
     </FormWrapper>
   )
 }
-const TasteInputWrapper = styled.div`
-  margin: 10px;
-  display: grid;
-  grid-template-columns: 110px 110px 110px;
-  grid-template-rows: 1fr 1fr;
-  gap: 15px;
-  font-size: 17px;
-  input:checked + label {
-    background: linear-gradient(0.25turn, #88994c, #d1d1d1, #fff);
-  }
-`
 
+const FormWrapper = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0px auto;
+`
+const SimpleInput = styled.input`
+  border: none;
+  font-size: 19px;
+  text-align: center;
+  opacity: 0.4;
+  margin-bottom: 20px;
+  background: #f5f5f5;
+`
 const FragrantInputWrapper = styled.div`
-  margin: 20px;
+  margin: 10px;
   display: grid;
   grid-template-columns: 100px 100px;
   grid-template-rows: 1 fr 1fr 1fr;
@@ -125,7 +175,34 @@ const FragrantInputWrapper = styled.div`
     background: linear-gradient(0.25turn, #88994c, #d1d1d1, #fff);
   }
 `
-
+const TasteInputWrapper = styled.div`
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 110px 110px 110px;
+  grid-template-rows: 1fr 
+  gap: 15px;
+  font-size: 17px;
+  input:checked + label {
+    background: linear-gradient(0.25turn, #88994c, #d1d1d1, #fff);
+  }
+`
+const InfoInputWrapper = styled.div`
+  margin: 10px;
+  display: grid;
+  grid-auto-flow: rows;
+  gap: 5px;
+  font-size: 17px;
+`
+const InfoInput = styled.input`
+  border: none;
+  border-bottom: 1px solid #d1d1d1;
+  border-radius: 5px;
+  text-align: left;
+  font-size: 15px;
+  opacity: 0.4;
+  margin-bottom: 20px;
+  background: #f5f5f5;
+`
 const InputTag = styled.input`
   display: none;
 `
@@ -138,22 +215,8 @@ const LabelTag = styled.label`
   width: 115px;
 `
 
-const FormWrapper = styled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 30px auto;
-`
-const SimpleInput = styled.input`
-  border: none;
-  font-size: 19px;
-  text-align: center;
-  opacity: 0.4;
-`
-
 const RadioInputWrapper = styled.div`
-  margin: 20px;
+  margin: 10px;
   display: grid;
   grid-auto-flow: column;
   gap: 20px;

@@ -9,6 +9,10 @@ export default function Evaluation(card) {
       You've tasted {card.name} and generally {card.like ? 'liked' : 'disliked'}{' '}
       it! {<p>Fragrance nuances: {card.fragrant}.</p>}{' '}
       <p>Taste nuances: {card.taste}.</p>
+      <p>
+        The information you gathered: {card.producer} {card.region}{' '}
+        {card.vintage} {card.classification} {card.cultivar}
+      </p>
     </Cardstyle>
   )
 }
@@ -18,7 +22,7 @@ const Cardstyle = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 20px auto;
+  margin: 10px auto;
   width: 300px;
 
   opacity: 0.8;
@@ -29,7 +33,7 @@ const Cardstyle = styled.div`
 `
 const Title = styled.h1`
   text-align: center;
-  margin: 20px;
+  margin-bottom: 20px;
 `
 
 Evaluation.propTypes = {
