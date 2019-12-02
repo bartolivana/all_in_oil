@@ -102,7 +102,7 @@ export default function EvaluationInput({ onSubmit }) {
           type="text"
           name="producer"
           id="producer"
-          placeholder="Giacomo Grassi"
+          placeholder="e.g. Giacomo Grassi"
         />
 
         <label htmlFor="region">Country/Region</label>
@@ -110,18 +110,23 @@ export default function EvaluationInput({ onSubmit }) {
           type="text"
           name="region"
           id="region"
-          placeholder="Italy, Tuscany"
+          placeholder="e.g. Italy, Tuscany"
         />
 
         <label htmlFor="vintage">Vintage</label>
-        <InfoInput type="text" name="vintage" id="vintage" placeholder="2016" />
+        <InfoInput
+          type="text"
+          name="vintage"
+          id="vintage"
+          placeholder="e.g. 2016"
+        />
 
         <label htmlFor="classification">Classification</label>
         <InfoInput
           type="text"
           name="classification"
           id="classification"
-          placeholder="Extra Virgin Olive Oil "
+          placeholder="e.g. Extra Virgin Olive Oil "
         />
 
         <label htmlFor="cultivar">Cultivars</label>
@@ -129,7 +134,7 @@ export default function EvaluationInput({ onSubmit }) {
           type="text"
           name="cultivar"
           id="cultivar"
-          placeholder="Pendolino"
+          placeholder="e.g. Pendolino"
         />
       </InfoInputWrapper>
 
