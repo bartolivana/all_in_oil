@@ -5,52 +5,18 @@ import PropTypes from 'prop-types'
 export default function EvaluationInput({ onSubmit }) {
   function handleSubmit(event) {
     event.preventDefault()
-    let newId = Math.round(Math.random() * 400)
+    const id = Math.round(Math.random() * 400)
     const form = event.target
-    const {
-      name: nameInput,
-      like: likeInput,
-      hay: hayInput,
-      apple: appleInput,
-      almond: almondInput,
-      artichoke: artichokeInput,
-      fruit: fruitInput,
-      bitter: bitterInput,
-      spicy: spicyInput,
-      astringent: astringentInput,
-      producer: producerInput,
-      region: regionInput,
-      vintage: vintageInput,
-      classification: classificationInput,
-      cultivar: cultivarInput
-    } = form
+    const formData = new FormData(form)
+    const data = Object.fromEntries(formData)
+    const fragrants = ['hay', 'apple', 'almond', 'artichoke', 'fruit'].filter(
+      name => data[name] === 'on'
+    )
+    const taste = ['bitter', 'spicy', 'astringent'].filter(
+      name => data[name] === 'on'
+    )
 
-    const tasteArray = [
-      bitterInput.checked ? bitterInput.value : '',
-      spicyInput.checked ? spicyInput.value : '',
-      astringentInput.checked ? astringentInput.value : ''
-    ]
-
-    const fragrantArray = [
-      hayInput.checked ? hayInput.value : '',
-      appleInput.checked ? appleInput.value : '',
-      almondInput.checked ? almondInput.value : '',
-      artichokeInput.checked ? artichokeInput.value : '',
-      fruitInput.checked ? fruitInput.value : ''
-    ]
-
-    onSubmit({
-      id: newId,
-      name: nameInput.value,
-      fragrant: fragrantArray.filter(fr => fr !== '').join(' '),
-      taste: tasteArray.filter(ta => ta !== '').join(' '),
-      like: likeInput.value === 'liked',
-      producer: producerInput.value,
-      region: regionInput.value,
-      vintage: vintageInput.value,
-      classification: classificationInput.value,
-      cultivar: cultivarInput.value
-    })
+    onSubmit({ ...data, fragrants, taste, id })
     form.reset()
   }
 
@@ -59,40 +25,30 @@ export default function EvaluationInput({ onSubmit }) {
       <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
 
       <FragrantInputWrapper>
-        <InputTag value="hay" type="checkbox" name="fragrant" id="hay" />
+        <InputTag type="checkbox" name="hay" id="hay" />
         <LabelTag htmlFor="hay">Hay</LabelTag>
 
-        <InputTag value="apple" type="checkbox" name="fraigrant" id="apple" />
+        <InputTag type="checkbox" name="apple" id="apple" />
         <LabelTag htmlFor="apple">Apple</LabelTag>
 
-        <InputTag value="almond" type="checkbox" name="fragrant" id="almond" />
+        <InputTag type="checkbox" name="almond" id="almond" />
         <LabelTag htmlFor="almond">Almond</LabelTag>
 
-        <InputTag
-          value="artichoke"
-          type="checkbox"
-          name="fragrant"
-          id="artichoke"
-        />
+        <InputTag type="checkbox" name="artichoke" id="artichoke" />
         <LabelTag htmlFor="artichoke">Artichoke</LabelTag>
 
-        <InputTag value="fruit" type="checkbox" name="fragrant" id="fruit" />
+        <InputTag type="checkbox" name="fruit" id="fruit" />
         <LabelTag htmlFor="fruit">Fruit</LabelTag>
       </FragrantInputWrapper>
 
       <TasteInputWrapper>
-        <InputTag value="bitter" type="checkbox" name="taste" id="bitter" />
+        <InputTag type="checkbox" name="bitter" id="bitter" />
         <LabelTag htmlFor="bitter">Bitter</LabelTag>
 
-        <InputTag value="spicy" type="checkbox" name="taste" id="spicy" />
+        <InputTag type="checkbox" name="spicy" id="spicy" />
         <LabelTag htmlFor="spicy">Spicy</LabelTag>
 
-        <InputTag
-          value="astringent"
-          type="checkbox"
-          name="taste"
-          id="astringent"
-        />
+        <InputTag type="checkbox" name="astringent" id="astringent" />
         <LabelTag htmlFor="astringent">Astringent</LabelTag>
       </TasteInputWrapper>
 
