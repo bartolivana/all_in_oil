@@ -1,16 +1,18 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import DecorationImg from './img/LogoAlliveoil.svg'
 
 export default function Evaluation(card) {
   return (
     <Cardstyle>
+      <img src={DecorationImg} alt="background" width="100px" height="100px" />
       <Title>{card.name}</Title>
-      You've tasted {card.name} and generally {card.like ? 'liked' : 'disliked'}{' '}
-      it! {<p>Fragrance nuances: {card.fragrants.join(', ')}.</p>}{' '}
+      You've tasted {card.name} and generally {card.like} it!{' '}
+      {<p>Fragrance nuances: {card.fragrants.join(', ')}.</p>}{' '}
       <p>Taste nuances: {card.taste.join(', ')}.</p>
       <p>
-        The information you gathered: {card.producer}, {card.region}{' '}
+        The information you gathered: {card.producer}, {card.region},{' '}
         {card.vintage}, {card.classification}, {card.cultivar}
       </p>
     </Cardstyle>
@@ -38,5 +40,5 @@ const Title = styled.h1`
 
 Evaluation.propTypes = {
   name: PropTypes.string.isRequired,
-  like: PropTypes.bool
+  like: PropTypes.string
 }

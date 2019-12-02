@@ -9,7 +9,6 @@ export default function EvaluationInput({ onSubmit }) {
     const form = event.target
     const formData = new FormData(form)
     const data = Object.fromEntries(formData)
-    console.log(data)
     const fragrants = ['hay', 'apple', 'almond', 'artichoke', 'fruit'].filter(
       name => data[name] === 'on'
     )
