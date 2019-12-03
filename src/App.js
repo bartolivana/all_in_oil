@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import EvaluationInput from './EvaluationInput'
 import Evaluation from './Evaluation'
-import DecorationImg from './img/LogoAlliveoil.svg'
+import DecorationImg from './img/BackgroundBlur.svg'
 function App() {
   //localStorage.clear()
   let evalDataFromLocalStorage = JSON.parse(localStorage.getItem('cards'))
