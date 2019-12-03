@@ -26,7 +26,6 @@ const Cardstyle = styled.div`
   flex-direction: column;
   margin: 10px auto;
   width: 300px;
-
   opacity: 0.8;
   background: linear-gradient(#88994c, #fff);
   border-radius: 20px;

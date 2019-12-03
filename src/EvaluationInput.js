@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 export default function EvaluationInput({ onSubmit }) {
   function handleSubmit(event) {
-    event.preventDefault()
     const id = Math.round(Math.random() * 400)
     const form = event.target
     const formData = new FormData(form)
@@ -21,7 +20,7 @@ export default function EvaluationInput({ onSubmit }) {
   }
 
   return (
-    <FormWrapper onSubmit={handleSubmit}>
+    <FormWrapper action="/list" onSubmit={handleSubmit}>
       <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
 
       <FragrantInputWrapper>
@@ -71,7 +70,7 @@ export default function EvaluationInput({ onSubmit }) {
 
         <label htmlFor="vintage">Vintage</label>
         <InfoInput
-          type="text"
+          type="number"
           name="vintage"
           id="vintage"
           placeholder="e.g. 2016"
@@ -100,7 +99,8 @@ export default function EvaluationInput({ onSubmit }) {
         <input value="disliked" type="radio" name="like" id="dislike" />
         <label htmlFor="dislike">Dislike</label>
       </RadioInputWrapper>
-      <BtnSave>Save</BtnSave>
+
+      <BtnSave>Add to evaluation list</BtnSave>
     </FormWrapper>
   )
 }
@@ -110,7 +110,7 @@ const FormWrapper = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0px auto;
+  margin: 0px auto 50px auto;
 `
 const SimpleInput = styled.input`
   border: none;
@@ -183,12 +183,13 @@ const RadioInputWrapper = styled.div`
 `
 const BtnSave = styled.button`
   margin-top: 10px;
-  padding: 5px 30px;
+  padding: 10px 30px;
   background-color: #88994c;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   background: linear-gradient(#88994c, #fff);
   font-family: monospace;
+  font-size: 18px;
 `
 
 EvaluationInput.propTypes = {

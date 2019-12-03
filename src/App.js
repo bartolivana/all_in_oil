@@ -1,22 +1,37 @@
 import React, { useState } from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import styled from 'styled-components/macro'
 import EvaluationInput from './EvaluationInput'
 import Evaluation from './Evaluation'
 import DecorationImg from './img/LogoAlliveoil.svg'
 function App() {
-  localStorage.clear()
+  //localStorage.clear()
   let evalDataFromLocalStorage = JSON.parse(localStorage.getItem('cards'))
   const [cards, setCards] = useState(evalDataFromLocalStorage || [])
   saveEvaluationToLocalStorage()
 
   return (
-    <div className="App">
-      <img src={DecorationImg} alt="background" width="100px" height="100px" />
-      <EvaluationInput onSubmit={handleFormSubmit} />
-
-      {cards.map(card => (
-        <Evaluation {...card} key={card.id} />
-      ))}
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <img
+            src={DecorationImg}
+            alt="background"
+            width="100px"
+            height="100px"
+          />
+          <EvaluationInput onSubmit={handleFormSubmit} />
+        </Route>
+        <Route path="/list">
+          <HistoryList>
+            <h1>Your oils:</h1>
+            {cards.map(card => (
+              <Evaluation {...card} key={card.id} />
+            ))}
+          </HistoryList>
+        </Route>
+      </Switch>
+    </Router>
   )
 
   function handleFormSubmit(data) {
@@ -29,3 +44,11 @@ function App() {
 }
 
 export default App
+
+const HistoryList = styled.div`
+  display: grid;
+  margin-top: 20px;
+  grid-auto-flow: rows;
+  text-align: center;
+  gap: 10px;
+`

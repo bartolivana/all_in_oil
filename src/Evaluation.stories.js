@@ -8,7 +8,7 @@ export default {
 
 export const liked = () => (
   <Evaluation
-    name={text('Name', 'Leccino')}
+    data={text('Name', 'Leccino')}
     like={boolean('Like', true)}
   ></Evaluation>
 )
