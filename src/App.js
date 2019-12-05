@@ -55,7 +55,7 @@ export default App
 
 const HistoryList = styled.div`
   display: grid;
-  margin-top: 20px;
+
   grid-auto-flow: rows;
   text-align: center;
   gap: 10px;
