@@ -4,16 +4,20 @@ import styled from 'styled-components/macro'
 import EvaluationInput from './EvaluationInput'
 import Evaluation from './Evaluation'
 import DecorationImg from './img/BackgroundBlur.svg'
+import Navigation from './Navigation'
+
 function App() {
   //localStorage.clear()
   let evalDataFromLocalStorage = JSON.parse(localStorage.getItem('cards'))
   const [cards, setCards] = useState(evalDataFromLocalStorage || [])
+  const [navIsOpen, setNavIsOpen] = useState(false)
   saveEvaluationToLocalStorage()
 
   return (
     <Router>
+      <Navigation toggleNavOpen={toggleNavOpen} navIsOpen={navIsOpen} />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/create">
           <img
             src={DecorationImg}
             alt="background"
@@ -40,6 +44,10 @@ function App() {
 
   function saveEvaluationToLocalStorage() {
     localStorage.setItem('cards', JSON.stringify(cards))
+  }
+
+  function toggleNavOpen() {
+    setNavIsOpen(!navIsOpen)
   }
 }
 

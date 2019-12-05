@@ -20,88 +20,94 @@ export default function EvaluationInput({ onSubmit }) {
   }
 
   return (
-    <FormWrapper action="/list" onSubmit={handleSubmit}>
-      <SimpleInput name="name" placeholder="Name of your Oil" required="name" />
-
-      <FragrantInputWrapper>
-        <InputTag type="checkbox" name="hay" id="hay" />
-        <LabelTag htmlFor="hay">Hay</LabelTag>
-
-        <InputTag type="checkbox" name="apple" id="apple" />
-        <LabelTag htmlFor="apple">Apple</LabelTag>
-
-        <InputTag type="checkbox" name="almond" id="almond" />
-        <LabelTag htmlFor="almond">Almond</LabelTag>
-
-        <InputTag type="checkbox" name="artichoke" id="artichoke" />
-        <LabelTag htmlFor="artichoke">Artichoke</LabelTag>
-
-        <InputTag type="checkbox" name="fruit" id="fruit" />
-        <LabelTag htmlFor="fruit">Fruit</LabelTag>
-      </FragrantInputWrapper>
-
-      <TasteInputWrapper>
-        <InputTag type="checkbox" name="bitter" id="bitter" />
-        <LabelTag htmlFor="bitter">Bitter</LabelTag>
-
-        <InputTag type="checkbox" name="spicy" id="spicy" />
-        <LabelTag htmlFor="spicy">Spicy</LabelTag>
-
-        <InputTag type="checkbox" name="astringent" id="astringent" />
-        <LabelTag htmlFor="astringent">Astringent</LabelTag>
-      </TasteInputWrapper>
-
-      <InfoInputWrapper>
-        <label htmlFor="producer">Producer</label>
-        <InfoInput
-          type="text"
-          name="producer"
-          id="producer"
-          placeholder="e.g. Giacomo Grassi"
+    <>
+      <FormWrapper action="/list" onSubmit={handleSubmit}>
+        <SimpleInput
+          name="name"
+          placeholder="Name of your Oil"
+          required="name"
         />
 
-        <label htmlFor="region">Country/Region</label>
-        <InfoInput
-          type="text"
-          name="region"
-          id="region"
-          placeholder="e.g. Italy, Tuscany"
-        />
+        <FragrantInputWrapper>
+          <InputTag type="checkbox" name="hay" id="hay" />
+          <LabelTag htmlFor="hay">Hay</LabelTag>
 
-        <label htmlFor="vintage">Vintage</label>
-        <InfoInput
-          type="number"
-          name="vintage"
-          id="vintage"
-          placeholder="e.g. 2016"
-        />
+          <InputTag type="checkbox" name="apple" id="apple" />
+          <LabelTag htmlFor="apple">Apple</LabelTag>
 
-        <label htmlFor="classification">Classification</label>
-        <InfoInput
-          type="text"
-          name="classification"
-          id="classification"
-          placeholder="e.g. Extra Virgin Olive Oil "
-        />
+          <InputTag type="checkbox" name="almond" id="almond" />
+          <LabelTag htmlFor="almond">Almond</LabelTag>
 
-        <label htmlFor="cultivar">Cultivars</label>
-        <InfoInput
-          type="text"
-          name="cultivar"
-          id="cultivar"
-          placeholder="e.g. Pendolino"
-        />
-      </InfoInputWrapper>
+          <InputTag type="checkbox" name="artichoke" id="artichoke" />
+          <LabelTag htmlFor="artichoke">Artichoke</LabelTag>
 
-      <RadioInputWrapper>
-        <input value="liked" type="radio" name="like" id="like" />
-        <label htmlFor="like">Like</label>
-        <input value="disliked" type="radio" name="like" id="dislike" />
-        <label htmlFor="dislike">Dislike</label>
-      </RadioInputWrapper>
+          <InputTag type="checkbox" name="fruit" id="fruit" />
+          <LabelTag htmlFor="fruit">Fruit</LabelTag>
+        </FragrantInputWrapper>
 
-      <BtnSave>Add to evaluation list</BtnSave>
-    </FormWrapper>
+        <TasteInputWrapper>
+          <InputTag type="checkbox" name="bitter" id="bitter" />
+          <LabelTag htmlFor="bitter">Bitter</LabelTag>
+
+          <InputTag type="checkbox" name="spicy" id="spicy" />
+          <LabelTag htmlFor="spicy">Spicy</LabelTag>
+
+          <InputTag type="checkbox" name="astringent" id="astringent" />
+          <LabelTag htmlFor="astringent">Astringent</LabelTag>
+        </TasteInputWrapper>
+
+        <InfoInputWrapper>
+          <label htmlFor="producer">Producer</label>
+          <InfoInput
+            type="text"
+            name="producer"
+            id="producer"
+            placeholder="e.g. Giacomo Grassi"
+          />
+
+          <label htmlFor="region">Country/Region</label>
+          <InfoInput
+            type="text"
+            name="region"
+            id="region"
+            placeholder="e.g. Italy, Tuscany"
+          />
+
+          <label htmlFor="vintage">Vintage</label>
+          <InfoInput
+            type="number"
+            name="vintage"
+            id="vintage"
+            placeholder="e.g. 2016"
+          />
+
+          <label htmlFor="classification">Classification</label>
+          <InfoInput
+            type="text"
+            name="classification"
+            id="classification"
+            placeholder="e.g. Extra Virgin"
+          />
+
+          <label htmlFor="cultivar">Cultivars</label>
+          <InfoInput
+            type="text"
+            name="cultivar"
+            id="cultivar"
+            placeholder="e.g. Pendolino"
+          />
+        </InfoInputWrapper>
+
+        <RadioInputWrapper>
+          <input value="liked" type="radio" name="like" id="like" />
+          <label htmlFor="like">Like</label>
+          <input value="disliked" type="radio" name="like" id="dislike" />
+          <label htmlFor="dislike">Dislike</label>
+        </RadioInputWrapper>
+
+        <BtnSave>Add to evaluation list</BtnSave>
+      </FormWrapper>
+    </>
   )
 }
 
@@ -110,6 +116,7 @@ const FormWrapper = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   margin: 0px auto 50px auto;
 `
 const SimpleInput = styled.input`
