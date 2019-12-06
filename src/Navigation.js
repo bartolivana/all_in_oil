@@ -25,6 +25,9 @@ export default function Navigation({ navIsOpen, toggleNavOpen }) {
         <NavItem to="/list" onClick={toggleNavOpen}>
           List{' '}
         </NavItem>
+        <NavItem to="/add_photo" onClick={toggleNavOpen}>
+          Add Photo
+        </NavItem>
         <NavItem to="/how_to_taste_olive_oli" onClick={toggleNavOpen}>
           How to taste
         </NavItem>

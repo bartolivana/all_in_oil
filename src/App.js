@@ -5,6 +5,7 @@ import EvaluationInput from './EvaluationInput'
 import Evaluation from './Evaluation'
 import DecorationImg from './img/BackgroundBlur.svg'
 import Navigation from './Navigation'
+import AddPhoto from './AddPhoto'
 
 function App() {
   //localStorage.clear()
@@ -34,6 +35,10 @@ function App() {
             ))}
           </HistoryList>
         </Route>
+        <Route path="/add_photo">
+          <AddPhoto />
+        </Route>
+        <Route path="/how_to_taste_olive_oli"></Route>
       </Switch>
     </Router>
   )
@@ -54,9 +59,10 @@ function App() {
 export default App
 
 const HistoryList = styled.div`
+  margin: 10px;
   display: grid;
 
-  grid-auto-flow: rows;
+  grid-template-rows: 1 fr 1fr 1fr;
+  gap: 15px;
   text-align: center;
-  gap: 10px;
 `
