@@ -7,8 +7,7 @@ import styled from 'styled-components/macro'
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 
-export default function AddPhoto() {
-  const [image, setImage] = useState('')
+export default function AddPhoto({ image, setImage }) {
   let fileInput = React.createRef()
 
   function upload(event) {

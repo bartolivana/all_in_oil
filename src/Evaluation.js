@@ -8,6 +8,7 @@ export default function Evaluation(card) {
     <Cardstyle>
       <img src={DecorationImg} alt="background" width="100px" height="100px" />
       <Title>{card.name}</Title>
+      <img src={card.image} alt="" />
       You've tasted {card.name} and generally {card.like} it!{' '}
       {<p>Fragrance nuances: {card.fragrants.join(', ')}.</p>}{' '}
       <p>Taste nuances: {card.taste.join(', ')}.</p>

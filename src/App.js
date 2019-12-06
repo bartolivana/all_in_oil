@@ -13,6 +13,7 @@ function App() {
   const [cards, setCards] = useState(evalDataFromLocalStorage || [])
   const [navIsOpen, setNavIsOpen] = useState(false)
   saveEvaluationToLocalStorage()
+  const [image, setImage] = useState('')
 
   return (
     <Router>
@@ -25,7 +26,7 @@ function App() {
             width="100px"
             height="100px"
           />
-          <EvaluationInput onSubmit={handleFormSubmit} />
+          <EvaluationInput image={image} onSubmit={handleFormSubmit} />
         </Route>
         <Route path="/list">
           <HistoryList>
@@ -36,7 +37,7 @@ function App() {
           </HistoryList>
         </Route>
         <Route path="/add_photo">
-          <AddPhoto />
+          <AddPhoto setImage={setImage} image={image} />
         </Route>
         <Route path="/how_to_taste_olive_oli"></Route>
       </Switch>

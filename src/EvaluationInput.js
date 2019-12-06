@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
-export default function EvaluationInput({ onSubmit }) {
+export default function EvaluationInput({ onSubmit, image }) {
   function handleSubmit(event) {
     const id = Math.round(Math.random() * 400)
     const form = event.target
@@ -15,13 +15,14 @@ export default function EvaluationInput({ onSubmit }) {
       name => data[name] === 'on'
     )
 
-    onSubmit({ ...data, fragrants, taste, id })
+    onSubmit({ ...data, fragrants, taste, id, image })
     form.reset()
   }
 
   return (
     <>
       <FormWrapper action="/list" onSubmit={handleSubmit}>
+        <img src={image} alt="" />
         <SimpleInput
           name="name"
           placeholder="Name of your Oil"
