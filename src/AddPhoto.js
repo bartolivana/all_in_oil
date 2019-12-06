@@ -61,10 +61,10 @@ export default function AddPhoto() {
 }
 
 const Grid = styled.div`
-  display: flex;
+  display: grid;
+  grid-auto-flow: rows;
   margin: 30px auto;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+  justify-items: center;
+  align-content: center;
+  gap: 50px;
 `
