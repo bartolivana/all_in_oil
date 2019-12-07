@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import axios from 'axios'
 import BtnCam from './img/BtnCamera.svg'
 import BgLogo from './img/LogoAlliveoil.svg'
