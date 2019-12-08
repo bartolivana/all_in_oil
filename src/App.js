@@ -12,19 +12,22 @@ function App() {
   let evalDataFromLocalStorage = JSON.parse(localStorage.getItem('cards'))
   const [cards, setCards] = useState(evalDataFromLocalStorage || [])
   const [navIsOpen, setNavIsOpen] = useState(false)
-  saveEvaluationToLocalStorage()
   const [image, setImage] = useState('')
+  saveEvaluationToLocalStorage()
 
   return (
     <Router>
       <Navigation toggleNavOpen={toggleNavOpen} navIsOpen={navIsOpen} />
       <Switch>
+        <Route path="/add_photo">
+          <AddPhoto setImage={setImage} image={image} />
+        </Route>
         <Route exact path="/create">
-          <img
+          <HeadImg
             src={DecorationImg}
             alt="background"
-            width="100px"
-            height="100px"
+            width="200px"
+            height="200px"
           />
           <EvaluationInput image={image} onSubmit={handleFormSubmit} />
         </Route>
@@ -35,9 +38,6 @@ function App() {
               <Evaluation {...card} key={card.id} />
             ))}
           </HistoryList>
-        </Route>
-        <Route path="/add_photo">
-          <AddPhoto setImage={setImage} image={image} />
         </Route>
         <Route path="/how_to_taste_olive_oli"></Route>
       </Switch>
@@ -62,8 +62,8 @@ export default App
 const HistoryList = styled.div`
   margin: 10px;
   display: grid;
-
   grid-template-rows: 1 fr 1fr 1fr;
   gap: 15px;
   text-align: center;
 `
+const HeadImg = styled.img``

@@ -1,8 +1,8 @@
 import React from 'react'
+import styled from 'styled-components/macro'
 import axios from 'axios'
 import BtnCam from './img/BtnCamera.svg'
 import BgLogo from './img/LogoAlliveoil.svg'
-import styled from 'styled-components/macro'
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
@@ -39,7 +39,7 @@ export default function AddPhoto({ image, setImage }) {
     <Grid>
       <img src={BgLogo} alt="" width="300px" height="400px" />
       {image ? (
-        <img src={image} alt="" style={{ width: '100%' }} />
+        <img src={image} alt="" style={{ display: 'none' }} />
       ) : (
         <>
           <input
@@ -50,7 +50,7 @@ export default function AddPhoto({ image, setImage }) {
             ref={fileInput}
           />
           <label>Time to shoot your oil bottle</label>
-          <button onClick={handleClick}>
+          <button onClick={handleClick} action="/create">
             <img src={BtnCam} alt="" width="50px" height="50px" />
           </button>
         </>

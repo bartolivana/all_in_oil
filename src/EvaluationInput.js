@@ -22,7 +22,17 @@ export default function EvaluationInput({ onSubmit, image }) {
   return (
     <>
       <FormWrapper action="/list" onSubmit={handleSubmit}>
-        <img src={image} alt="" />
+        <img
+          src={image}
+          alt=""
+          style={{
+            width: '00px',
+            height: '00px',
+            borderRadius: '00px',
+            marginBottom: '40px',
+            border: '1px'
+          }}
+        />
         <SimpleInput
           name="name"
           placeholder="Name of your Oil"
