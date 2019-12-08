@@ -19,6 +19,9 @@ export default function Navigation({ navIsOpen, toggleNavOpen }) {
         </Burger>
       </NavToggle>
       <NavList>
+        <NavItem to="/add_photo" onClick={toggleNavOpen}>
+          Add Photo
+        </NavItem>
         <NavItem to="/create" onClick={toggleNavOpen}>
           Create
         </NavItem>
@@ -52,7 +55,6 @@ const NavigationStyled = styled.nav`
 
 const NavToggle = styled.button`
   position: absolute;
-  top: 35px;
   transform: translateX(-100%);
   background: none;
   border: 0;
@@ -66,6 +68,8 @@ const Burger = styled.div`
   background: none;
   margin: 0;
   padding: 0;
+  left: -30px;
+  top: 30px;
 `
 
 const NavList = styled.ul`
