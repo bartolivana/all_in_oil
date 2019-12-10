@@ -32,7 +32,7 @@ export default function EvaluationInput({ onSubmit, image }) {
             borderRadius: '100px',
             marginBottom: '40px',
             border: '1px',
-            margin: 'auto'
+            margin: '10px auto'
           }}
         />
         <SimpleInput
@@ -142,10 +142,11 @@ const FormWrapper = styled.form`
 `
 const SimpleInput = styled.input`
   border: none;
+
   font-size: 19px;
   text-align: center;
   opacity: 0.4;
-  margin: 0 auto 20px auto;
+  margin: 10px auto 20px auto;
   background: #f5f5f5;
 `
 const Title = styled.p`

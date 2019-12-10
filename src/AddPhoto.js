@@ -4,6 +4,7 @@ import axios from 'axios'
 import BtnCam from './img/BtnCamera.svg'
 import BgLogo from './img/AllInOilLogo.png'
 import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
@@ -25,12 +26,12 @@ export default function AddPhoto({ image, setImage }) {
         }
       })
       .then(onImageSave)
+      //.then((window.history.pushState = '/create'))
       .catch(err => console.error(err))
   }
 
   function onImageSave(response) {
     setImage(response.data.url)
-    window.location.pathname = '/create'
   }
 
   function handleClick() {
@@ -62,6 +63,7 @@ export default function AddPhoto({ image, setImage }) {
           </button>
         </>
       )}
+      {image ? <Redirect to="create"></Redirect> : ''}
     </Grid>
   )
 }
