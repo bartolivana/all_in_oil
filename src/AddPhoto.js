@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import axios from 'axios'
 import BtnCam from './img/BtnCamera.svg'
 import BgLogo from './img/AllInOilLogo.png'
-import { Link } from 'react-router-dom'
+
 import { Redirect } from 'react-router-dom'
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
@@ -26,7 +26,6 @@ export default function AddPhoto({ image, setImage }) {
         }
       })
       .then(onImageSave)
-      //.then((window.history.pushState = '/create'))
       .catch(err => console.error(err))
   }
 
@@ -41,28 +40,22 @@ export default function AddPhoto({ image, setImage }) {
   return (
     <Grid>
       <LargeLogo src={BgLogo} alt="BgLogo" width="350px" height="350px" />
-      {image ? (
-        <img src={image} alt="" style={{ display: 'none' }} />
-      ) : (
-        <>
-          <input
-            type="file"
-            name="file"
-            onChange={upload}
-            style={{ display: 'none' }}
-            ref={fileInput}
-          />
-          <label>Time to shoot your oil bottle</label>
+      <input
+        type="file"
+        name="file"
+        onChange={upload}
+        style={{ display: 'none' }}
+        ref={fileInput}
+      />
+      <label>Time to shoot your oil bottle</label>
+      <button
+        style={{ background: 'none', border: 'none' }}
+        action="/create"
+        onClick={handleClick}
+      >
+        <BtnCamera src={BtnCam} alt="" width="50px" height="50px" />
+      </button>
 
-          <button
-            style={{ background: 'none', border: 'none' }}
-            action="/create"
-            onClick={handleClick}
-          >
-            <BtnCamera src={BtnCam} alt="" width="50px" height="50px" />
-          </button>
-        </>
-      )}
       {image ? <Redirect to="create"></Redirect> : ''}
     </Grid>
   )
