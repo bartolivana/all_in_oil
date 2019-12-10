@@ -23,7 +23,7 @@ export default function Navigation({ navIsOpen, toggleNavOpen }) {
           Add Photo
         </NavItem>
         <NavItem to="/create" onClick={toggleNavOpen}>
-          Create
+          Add new Evaluation
         </NavItem>
         <NavItem to="/list" onClick={toggleNavOpen}>
           List{' '}
@@ -68,8 +68,8 @@ const Burger = styled.div`
   background: none;
   margin: 0;
   padding: 0;
-  left: -30px;
-  top: 30px;
+  left: -20px;
+  top: 5px;
 `
 
 const NavList = styled.ul`
