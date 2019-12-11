@@ -23,7 +23,7 @@ export default function Navigation({ navIsOpen, toggleNavOpen }) {
           Add Photo
         </NavItem>
         <NavItem to="/create" onClick={toggleNavOpen}>
-          Create
+          Add new Evaluation
         </NavItem>
         <NavItem to="/list" onClick={toggleNavOpen}>
           List{' '}
@@ -58,18 +58,21 @@ const NavToggle = styled.button`
   transform: translateX(-100%);
   background: none;
   border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 60px;
+  left: -30px;
 `
 
 const Burger = styled.div`
-  position: relative;
+  position: absolute;
   font-size: 30px;
   border: 0;
   cursor: default;
   background: none;
   margin: 0;
   padding: 0;
-  left: -30px;
-  top: 30px;
 `
 
 const NavList = styled.ul`
@@ -79,6 +82,7 @@ const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 200px;
 `
 
 const NavItem = styled(Link)`

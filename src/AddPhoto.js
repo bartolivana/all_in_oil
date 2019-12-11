@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import axios from 'axios'
 import BtnCam from './img/BtnCamera.svg'
-import BgLogo from './img/LogoAlliveoil.svg'
+import BgLogo from './img/AllInOilLogo.png'
+
+import { Redirect } from 'react-router-dom'
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
@@ -37,24 +39,24 @@ export default function AddPhoto({ image, setImage }) {
 
   return (
     <Grid>
-      <img src={BgLogo} alt="" width="300px" height="400px" />
-      {image ? (
-        <img src={image} alt="" style={{ display: 'none' }} />
-      ) : (
-        <>
-          <input
-            type="file"
-            name="file"
-            onChange={upload}
-            style={{ display: 'none' }}
-            ref={fileInput}
-          />
-          <label>Time to shoot your oil bottle</label>
-          <button onClick={handleClick} action="/create">
-            <img src={BtnCam} alt="" width="50px" height="50px" />
-          </button>
-        </>
-      )}
+      <LargeLogo src={BgLogo} alt="BgLogo" width="350px" height="350px" />
+      <input
+        type="file"
+        name="file"
+        onChange={upload}
+        style={{ display: 'none' }}
+        ref={fileInput}
+      />
+      <label>Time to shoot your oil bottle</label>
+      <button
+        style={{ background: 'none', border: 'none' }}
+        action="/create"
+        onClick={handleClick}
+      >
+        <BtnCamera src={BtnCam} alt="" width="50px" height="50px" />
+      </button>
+
+      {image ? <Redirect to="create"></Redirect> : ''}
     </Grid>
   )
 }
@@ -66,4 +68,15 @@ const Grid = styled.div`
   justify-items: center;
   align-content: center;
   gap: 50px;
+`
+const LargeLogo = styled.img`
+  width: '350px';
+  height: '350px';
+  margin-top: 30px;
+`
+
+const BtnCamera = styled.img`
+  border: 0;
+  cursor: default;
+  background: none;
 `

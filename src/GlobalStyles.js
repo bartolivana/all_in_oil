@@ -11,4 +11,12 @@ export default createGlobalStyle`
     font-size: 18px;
     background-color:#F5F5F5;
   }
+
+  #root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 `
