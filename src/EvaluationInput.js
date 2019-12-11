@@ -142,7 +142,6 @@ const FormWrapper = styled.form`
 `
 const SimpleInput = styled.input`
   border: none;
-
   font-size: 19px;
   text-align: center;
   opacity: 0.4;

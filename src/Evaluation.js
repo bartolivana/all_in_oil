@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-
+import HeaderImg from './img/Header.png'
 export default function Evaluation(card) {
   return (
     <Cardstyle>
@@ -10,12 +10,24 @@ export default function Evaluation(card) {
           src={card.image}
           alt=""
           style={{
+            zIndex: '1',
             width: '150px',
             height: '150px',
             borderRadius: '150px',
             margin: '10px 0 0 20px'
           }}
         />
+        <img
+          style={{
+            width: '100%',
+            position: 'absolute',
+            top: '0',
+            height: '80px',
+            objectFit: 'cover'
+          }}
+          src={HeaderImg}
+          alt=""
+        ></img>
         <Title>{card.name}</Title>
       </CardHeader>
       <TextValue>
@@ -67,9 +79,9 @@ const Cardstyle = styled.div`
   display: grid;
   margin: 10px 20px;
   opacity: 0.8;
-  border-radius: 20px;
-  background: linear-gradient(0.5turn, #c3caa8, #f5f5f5);
-  filter: drop-shadow(1px 1px 10px #b4b4b4);
+  background-color: #fff;
+  filter: drop-shadow(0 1px 12px #dfe3d1);
+  position: relative;
 `
 const CardHeader = styled.section`
   display: grid;
