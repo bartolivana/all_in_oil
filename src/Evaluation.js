@@ -8,8 +8,11 @@ export default function Evaluation(card) {
   return (
     <Cardstyle>
       <CardHeader onClick={toggleIsHidden}>
-        <OilImg src={card.image} alt="" />
-        <ImgSubHeader src={HeaderImg} alt="" />
+        <OilImg
+          src={card.image}
+          alt="photo of the olive oil bottle with label"
+        />
+        <ImgSubHeader src={HeaderImg} alt="green watercolor effect" />
         <Title>{card.name}</Title>
       </CardHeader>
 

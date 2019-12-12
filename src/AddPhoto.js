@@ -39,7 +39,12 @@ export default function AddPhoto({ image, setImage }) {
 
   return (
     <Grid>
-      <LargeLogo src={BgLogo} alt="BgLogo" width="350px" height="350px" />
+      <LargeLogo
+        src={BgLogo}
+        alt="Logo for All in Oil"
+        width="350px"
+        height="350px"
+      />
       <input
         type="file"
         name="file"
@@ -50,7 +55,6 @@ export default function AddPhoto({ image, setImage }) {
       <label>Time to shoot your oil bottle</label>
       <button
         style={{ background: 'none', border: 'none' }}
-        action="/create"
         onClick={handleClick}
       >
         <BtnCamera src={BtnCam} alt="" width="50px" height="50px" />
