@@ -1,78 +1,69 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import HeaderImg from './img/Header.png'
 export default function Evaluation(card) {
+  const [isHidden, setIsHidden] = useState(true)
+
   return (
     <Cardstyle>
-      <CardHeader>
-        <img
-          src={card.image}
-          alt=""
-          style={{
-            zIndex: '1',
-            width: '150px',
-            height: '150px',
-            borderRadius: '150px',
-            margin: '10px 0 0 20px'
-          }}
-        />
-        <img
-          style={{
-            width: '100%',
-            position: 'absolute',
-            top: '0',
-            height: '80px',
-            objectFit: 'cover'
-          }}
-          src={HeaderImg}
-          alt=""
-        ></img>
+      <CardHeader onClick={toggleIsHidden}>
+        <OilImg src={card.image} alt="" />
+        <ImgSubHeader src={HeaderImg} alt="" />
         <Title>{card.name}</Title>
       </CardHeader>
-      <TextValue>
-        You've tasted {card.name} and generally {card.like} it!
-      </TextValue>
-      {card.fragrants.join(', ') === '' || (
-        <Text>
-          Fragrance nuances: <TextValue>{card.fragrants.join(', ')}</TextValue>
-        </Text>
+
+      {!isHidden && (
+        <>
+          <TextSubtitle>
+            You've tasted {card.name} and generally {card.like} it!
+          </TextSubtitle>
+          {card.fragrants.join(', ') === '' || (
+            <Text>
+              Fragrance nuances:{' '}
+              <TextValue>{card.fragrants.join(', ')}</TextValue>
+            </Text>
+          )}
+          {card.taste.join(', ') === '' || (
+            <Text>
+              Taste nuances: <TextValue>{card.taste.join(', ')}</TextValue>
+            </Text>
+          )}
+          <section>
+            {card.producer === '' || (
+              <Text>
+                Producer:<TextValue>{card.producer}</TextValue>
+              </Text>
+            )}
+            {card.region === '' || (
+              <Text>
+                Region:<TextValue>{card.region}</TextValue>
+              </Text>
+            )}
+            {card.vintage === '' || (
+              <Text>
+                Vintage:<TextValue>{card.vintage}</TextValue>
+              </Text>
+            )}
+            {card.classification === '' || (
+              <Text>
+                Classification:<TextValue>{card.classification}</TextValue>
+              </Text>
+            )}
+            {card.cultivar === '' || (
+              <Text>
+                Cultivar:<TextValue>{card.cultivar}</TextValue>
+              </Text>
+            )}
+          </section>
+        </>
       )}
-      {card.taste.join(', ') === '' || (
-        <Text>
-          Taste nuances: <TextValue>{card.taste.join(', ')}</TextValue>
-        </Text>
-      )}
-      <section>
-        <TextValue> Infomation:</TextValue>
-        {card.producer === '' || (
-          <Text>
-            Producer:<TextValue>{card.producer}</TextValue>
-          </Text>
-        )}
-        {card.region === '' || (
-          <Text>
-            Region:<TextValue>{card.region}</TextValue>
-          </Text>
-        )}
-        {card.vintage === '' || (
-          <Text>
-            Vintage:<TextValue>{card.vintage}</TextValue>
-          </Text>
-        )}
-        {card.classification === '' || (
-          <Text>
-            Classification:<TextValue>{card.classification}</TextValue>
-          </Text>
-        )}
-        {card.cultivar === '' || (
-          <Text>
-            Cultivar:<TextValue>{card.cultivar}</TextValue>
-          </Text>
-        )}
-      </section>
     </Cardstyle>
   )
+
+  function toggleIsHidden() {
+    setIsHidden(!isHidden)
+  }
 }
 
 const Cardstyle = styled.div`
@@ -89,8 +80,28 @@ const CardHeader = styled.section`
   align-items:center;
   justify-content-center;
 `
-const Title = styled.h1`
-  text-align: start;
+const OilImg = styled.img`
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  margin: 10px 0 0 20px;
+`
+const ImgSubHeader = styled.img`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  height: 80px;
+  objectfit: cover;
+`
+
+const Title = styled.h2`
+  text-align: center;
+`
+const TextSubtitle = styled.h3`
+  font-weight: bold;
+  margin: 20px;
+  font-size: 1.5 rem;
 `
 const Text = styled.p`
   margin: 10px 20px;
@@ -99,7 +110,7 @@ const Text = styled.p`
 `
 const TextValue = styled.span`
   font-weight: bold;
-  margin: 10px auto;
+  margin: 20px;
 `
 
 Evaluation.propTypes = {

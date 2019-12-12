@@ -41,7 +41,7 @@ function App() {
   )
 
   function handleFormSubmit(data) {
-    setCards([...cards, data])
+    setCards([data, ...cards])
   }
 
   function saveEvaluationToLocalStorage() {
