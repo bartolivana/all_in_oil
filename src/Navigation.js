@@ -19,7 +19,7 @@ export default function Navigation({ navIsOpen, toggleNavOpen }) {
         </Burger>
       </NavToggle>
       <NavList>
-        <NavItem to="/add_photo" onClick={toggleNavOpen}>
+        <NavItem to="/home" onClick={toggleNavOpen}>
           Add Photo
         </NavItem>
         <NavItem to="/create" onClick={toggleNavOpen}>

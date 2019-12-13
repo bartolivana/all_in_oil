@@ -23,18 +23,7 @@ export default function EvaluationInput({ onSubmit, image }) {
   return (
     <>
       <FormWrapper action="/list" onSubmit={handleSubmit}>
-        <img
-          src={image || BgLogo}
-          alt=""
-          style={{
-            width: '100px',
-            height: '100px',
-            borderRadius: '100px',
-            marginBottom: '40px',
-            border: '1px',
-            margin: '10px auto'
-          }}
-        />
+        <OilImg src={image || BgLogo} alt="" />
         <SimpleInput
           name="name"
           placeholder="Name of your Oil"
@@ -86,6 +75,7 @@ export default function EvaluationInput({ onSubmit, image }) {
               name="producer"
               id="producer"
               placeholder="e.g. Giacomo Grassi"
+              required="producer"
             />
 
             <label htmlFor="region">Country/Region</label>
@@ -140,8 +130,17 @@ const FormWrapper = styled.form`
   flex-direction: column;
   margin: 0px auto 50px auto;
 `
+const OilImg = styled.img`
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  marginbottom: 40px;
+  border: 1px;
+  margin: 30px auto 0 auto;
+`
 const SimpleInput = styled.input`
   border: none;
+  border-bottom: 1.5px solid #d1d1d1;
   font-size: 19px;
   text-align: center;
   opacity: 0.4;

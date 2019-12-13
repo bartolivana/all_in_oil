@@ -21,7 +21,7 @@ function App() {
       <Navigation toggleNavOpen={toggleNavOpen} navIsOpen={navIsOpen} />
 
       <Switch>
-        <Route path="/add_photo">
+        <Route path="/home">
           <AddPhoto setImage={setImage} image={image} />
         </Route>
         <Route exact path="/create">
@@ -41,7 +41,7 @@ function App() {
   )
 
   function handleFormSubmit(data) {
-    setCards([...cards, data])
+    setCards([data, ...cards])
   }
 
   function saveEvaluationToLocalStorage() {
