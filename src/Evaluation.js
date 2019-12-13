@@ -23,41 +23,50 @@ export default function Evaluation(card) {
             You've tasted {card.name} and generally {card.like} it!
           </TextSubtitle>
           {card.fragrants.join(', ') === '' || (
-            <Text>
-              Fragrance nuances:{' '}
+            <>
+              <Text> Fragrance nuances:</Text>
               <TextValue>{card.fragrants.join(', ')}</TextValue>
-            </Text>
+            </>
           )}
+
           {card.taste.join(', ') === '' || (
-            <Text>
-              Taste nuances: <TextValue>{card.taste.join(', ')}</TextValue>
-            </Text>
+            <>
+              {' '}
+              <Text>Taste nuances:</Text>
+              <TextValue>{card.taste.join(', ')}</TextValue>
+            </>
           )}
           <section>
             {card.producer === '' || (
-              <Text>
-                Producer:<TextValue>{card.producer}</TextValue>
-              </Text>
+              <>
+                <Text>Producer:</Text>
+                <TextValue>{card.producer}</TextValue>
+              </>
             )}
             {card.region === '' || (
-              <Text>
-                Region:<TextValue>{card.region}</TextValue>
-              </Text>
+              <>
+                <Text>Region:</Text>
+                <TextValue>{card.region}</TextValue>
+              </>
             )}
             {card.vintage === '' || (
-              <Text>
-                Vintage:<TextValue>{card.vintage}</TextValue>
-              </Text>
+              <>
+                {' '}
+                <Text>Vintage:</Text>
+                <TextValue>{card.vintage}</TextValue>
+              </>
             )}
             {card.classification === '' || (
-              <Text>
-                Classification:<TextValue>{card.classification}</TextValue>
-              </Text>
+              <>
+                <Text>Classification:</Text>
+                <TextValue>{card.classification}</TextValue>
+              </>
             )}
             {card.cultivar === '' || (
-              <Text>
-                Cultivar:<TextValue>{card.cultivar}</TextValue>
-              </Text>
+              <>
+                <Text>Cultivar:</Text>
+                <TextValue>{card.cultivar}</TextValue>
+              </>
             )}
           </section>
         </>
@@ -101,6 +110,8 @@ const ImgSubHeader = styled.img`
 
 const Title = styled.h2`
   text-align: center;
+  font-family: 'Amatic SC', sans-serif;
+  color: #5f5e5c;
 `
 const TextSubtitle = styled.h3`
   font-weight: bold;
@@ -110,11 +121,13 @@ const TextSubtitle = styled.h3`
 const Text = styled.p`
   margin: 10px 20px;
   text-align: start;
-  font-style: oblique;
+  color: #5f5e5c;
 `
 const TextValue = styled.span`
   font-weight: bold;
-  margin: 20px;
+  font-family: 'Amatic SC', sans-serif;
+  color: #000;
+  padding: 10px;
 `
 
 Evaluation.propTypes = {
