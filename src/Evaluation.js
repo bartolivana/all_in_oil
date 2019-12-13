@@ -12,6 +12,7 @@ export default function Evaluation(card) {
           src={card.image}
           alt="photo of the olive oil bottle with label"
         />
+
         <ImgSubHeader src={HeaderImg} alt="green watercolor effect" />
         <Title>{card.name}</Title>
       </CardHeader>
