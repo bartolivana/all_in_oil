@@ -65,4 +65,6 @@ const HistoryList = styled.div`
 
 const ListTitle = styled.h1`
   margin-top: 60px;
+  font-family: 'Amatic SC', sans-serif;
+  color: #5f5e5c;
 `
