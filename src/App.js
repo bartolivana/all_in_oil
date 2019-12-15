@@ -6,8 +6,24 @@ import Evaluation from './Evaluation'
 import Navigation from './Navigation'
 import AddPhoto from './AddPhoto'
 import Header from './Header'
+import * as firebase from 'firebase/app'
+import 'firebase/firestore'
 
-function App() {
+var firebaseConfig = {
+  apiKey: 'AIzaSyDM_HoqBftyAScBZgL7LnPXDMuKEiJiF2w',
+  authDomain: 'all-in-oil.firebaseapp.com',
+  databaseURL: 'https://all-in-oil.firebaseio.com',
+  projectId: 'all-in-oil',
+  storageBucket: 'all-in-oil.appspot.com',
+  messagingSenderId: '992794089563',
+  appId: '1:992794089563:web:d7ae49f205ace05f7bc77e',
+  measurementId: 'G-6F68LSQRXK'
+}
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig)
+const db = firebase.firestore()
+
+export default function App() {
   //localStorage.clear()
   let evalDataFromLocalStorage = JSON.parse(localStorage.getItem('cards'))
   const [cards, setCards] = useState(evalDataFromLocalStorage || [])
@@ -15,16 +31,32 @@ function App() {
   const [image, setImage] = useState('')
   saveEvaluationToLocalStorage()
 
+  const docRef = db.collection('Evaluation_List').doc('IgmWJCKqU8WU1fNFaf82')
+
+  docRef
+    .get()
+    .then(function(doc) {
+      if (doc.exists) {
+        console.log('Document data:', doc.data())
+      } else {
+        // doc.data() will be undefined in this case
+        console.log('No such document!')
+      }
+    })
+    .catch(function(error) {
+      console.log('Error getting document:', error)
+    })
+
   return (
     <Router>
       <Header />
       <Navigation toggleNavOpen={toggleNavOpen} navIsOpen={navIsOpen} />
 
       <Switch>
-        <Route path="/home">
+        <Route exact path="/home">
           <AddPhoto setImage={setImage} image={image} />
         </Route>
-        <Route exact path="/create">
+        <Route path="/create">
           <EvaluationInput image={image} onSubmit={handleFormSubmit} />
         </Route>
         <Route path="/list">
@@ -41,7 +73,16 @@ function App() {
   )
 
   function handleFormSubmit(data) {
+    console.log(data)
     setCards([data, ...cards])
+    db.collection('Evaluation_List')
+      .add(data)
+      .then(function(docRef) {
+        console.log('Document written with ID: ', docRef.id)
+      })
+      .catch(function(error) {
+        console.error('Error adding document: ', error)
+      })
   }
 
   function saveEvaluationToLocalStorage() {
@@ -52,8 +93,6 @@ function App() {
     setNavIsOpen(!navIsOpen)
   }
 }
-
-export default App
 
 const HistoryList = styled.div`
   margin: 10px auto 0 0;

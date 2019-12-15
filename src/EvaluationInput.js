@@ -9,14 +9,20 @@ export default function EvaluationInput({ onSubmit, image }) {
     const form = event.target
     const formData = new FormData(form)
     const data = Object.fromEntries(formData)
-    const fragrants = ['hay', 'apple', 'almond', 'artichoke', 'fruit'].filter(
-      name => data[name] === 'on'
-    )
+    const fragrants = [
+      'hay',
+      'apple',
+      'almond',
+      'artichoke',
+      'fruit',
+      'tomato'
+    ].filter(name => data[name] === 'on')
     const taste = ['bitter', 'spicy', 'astringent'].filter(
       name => data[name] === 'on'
     )
 
     onSubmit({ ...data, fragrants, taste, id, image })
+    console.log(data)
     form.reset()
   }
 
@@ -24,6 +30,7 @@ export default function EvaluationInput({ onSubmit, image }) {
     <>
       <FormWrapper action="/list" onSubmit={handleSubmit}>
         <OilImg src={image || BgLogo} alt="" />
+        <Title>What's the name of your oil?</Title>
         <SimpleInput
           name="name"
           placeholder="Name of your Oil"
@@ -69,7 +76,7 @@ export default function EvaluationInput({ onSubmit, image }) {
           <Title>Gahter information:</Title>
 
           <InfoInputWrapper>
-            <label htmlFor="producer">Producer</label>
+            <label htmlFor="producer">Producer:</label>
             <InfoInput
               type="text"
               name="producer"
@@ -78,7 +85,7 @@ export default function EvaluationInput({ onSubmit, image }) {
               required="producer"
             />
 
-            <label htmlFor="region">Country/Region</label>
+            <label htmlFor="region">Country/Region:</label>
             <InfoInput
               type="text"
               name="region"
@@ -86,7 +93,7 @@ export default function EvaluationInput({ onSubmit, image }) {
               placeholder="e.g. Italy, Tuscany"
             />
 
-            <label htmlFor="vintage">Vintage</label>
+            <label htmlFor="vintage">Year:</label>
             <InfoInput
               type="number"
               name="vintage"
@@ -94,7 +101,7 @@ export default function EvaluationInput({ onSubmit, image }) {
               placeholder="e.g. 2016"
             />
 
-            <label htmlFor="classification">Classification</label>
+            <label htmlFor="classification">Classification:</label>
             <InfoInput
               type="text"
               name="classification"
@@ -102,7 +109,7 @@ export default function EvaluationInput({ onSubmit, image }) {
               placeholder="e.g. Extra Virgin"
             />
 
-            <label htmlFor="cultivar">Cultivars</label>
+            <label htmlFor="cultivar">Cultivar/variety:</label>
             <InfoInput
               type="text"
               name="cultivar"
@@ -148,8 +155,9 @@ const SimpleInput = styled.input`
   background: #f5f5f5;
 `
 const Title = styled.p`
-  font-size: 15px;
-  margin: 10px 30px;
+  font-size: 0.9rem;
+  margin: 40px 30px;
+  text-align: center;
 `
 const FragrantInputWrapper = styled.div`
   margin: 10px auto;
@@ -217,7 +225,7 @@ const BtnSave = styled.button`
   background-color: #88994c;
   border: none;
   border-radius: 20px;
-  background: linear-gradient(#88994c, #fff);
+  background: linear-gradient(#d1d1d1, #fff);
   font-family: monospace;
   font-size: 18px;
 `

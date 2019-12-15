@@ -26,7 +26,7 @@ export default function Navigation({ navIsOpen, toggleNavOpen }) {
           Add new Evaluation
         </NavItem>
         <NavItem to="/list" onClick={toggleNavOpen}>
-          List{' '}
+          Your oils{' '}
         </NavItem>
         <NavItem to="/how_to_taste_olive_oli" onClick={toggleNavOpen}>
           How to taste
@@ -39,11 +39,11 @@ export default function Navigation({ navIsOpen, toggleNavOpen }) {
 const NavigationStyled = styled.nav`
   position: fixed;
   right: 0;
-  opacity: 0.9;
+  opacity: 0.95;
   height: 100vh;
   transform: translateX(100%);
   transition: transform 500ms cubic-bezier(0.5, 0, 0.5, 1);
-  background: linear-gradient(0.3turn, #f5f5f5, #f5f5f5, #88994c);
+  background: linear-gradient(0.3turn, #f5f5f5, #f5f5f5, #f5f5f5);
   z-index: 50;
   border-radius: 20px;
 
