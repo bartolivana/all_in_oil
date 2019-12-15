@@ -6,6 +6,7 @@ import Evaluation from './Evaluation'
 import Navigation from './Navigation'
 import AddPhoto from './AddPhoto'
 import Header from './Header'
+import HowToTaste from './HowToTaste'
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 
@@ -67,7 +68,9 @@ export default function App() {
             ))}
           </HistoryList>
         </Route>
-        <Route path="/how_to_taste_olive_oli"></Route>
+        <Route path="/how_to_taste_olive_oli">
+          <HowToTaste />
+        </Route>
       </Switch>
     </Router>
   )
