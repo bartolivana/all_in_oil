@@ -54,7 +54,7 @@ export default function App() {
       <Navigation toggleNavOpen={toggleNavOpen} navIsOpen={navIsOpen} />
 
       <Switch>
-        <Route exact path="/home">
+        <Route exact path="/">
           <AddPhoto setImage={setImage} image={image} />
         </Route>
         <Route path="/create">

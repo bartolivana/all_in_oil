@@ -5,6 +5,7 @@ import BgLogo from './img/AllInOilLogo.png'
 
 export default function EvaluationInput({ onSubmit, image }) {
   function handleSubmit(event) {
+    event.preventDefault()
     const id = Math.round(Math.random() * 400)
     const form = event.target
     const formData = new FormData(form)
@@ -24,11 +25,12 @@ export default function EvaluationInput({ onSubmit, image }) {
     onSubmit({ ...data, fragrants, taste, id, image })
     console.log(data)
     form.reset()
+    window.location.assign(window.location.origin + '/list')
   }
 
   return (
     <>
-      <FormWrapper action="/list" onSubmit={handleSubmit}>
+      <FormWrapper onSubmit={handleSubmit}>
         <OilImg src={image || BgLogo} alt="" />
         <Title>What's the name of your oil?</Title>
         <SimpleInput

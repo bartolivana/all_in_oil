@@ -106,7 +106,6 @@ const ImgSubHeader = styled.img`
   objectfit: cover;
   z-index: -10;
 `
-
 const Title = styled.h2`
   color: #5f5e5c;
   text-align: center;
