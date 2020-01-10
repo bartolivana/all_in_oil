@@ -22,7 +22,7 @@ export default function Navigation({ navIsOpen, toggleNavOpen }) {
         <NavItem to="/" onClick={toggleNavOpen}>
           Add Photo
         </NavItem>
-        <NavItem to="/create" onClick={toggleNavOpen}>
+        <NavItem to="/create_evaluation" onClick={toggleNavOpen}>
           Add new Evaluation
         </NavItem>
         <NavItem to="/list" onClick={toggleNavOpen}>

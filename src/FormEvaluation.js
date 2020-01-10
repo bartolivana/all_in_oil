@@ -18,6 +18,7 @@ export default function EvaluationInput({ onSubmit, image }) {
       'fruit',
       'tomato'
     ].filter(name => data[name] === 'on')
+
     const taste = ['bitter', 'spicy', 'astringent'].filter(
       name => data[name] === 'on'
     )
@@ -150,7 +151,7 @@ const OilImg = styled.img`
 const SimpleInput = styled.input`
   border: none;
   border-bottom: 1.5px solid #d1d1d1;
-  font-size: 19px;
+  font-size: 1.1875rem;
   text-align: center;
   opacity: 0.4;
   margin: 10px auto 20px auto;
@@ -167,7 +168,7 @@ const FragrantInputWrapper = styled.div`
   grid-template-columns: 100px 100px;
   grid-template-rows: 1 fr 1fr 1fr;
   gap: 20px;
-  font-size: 17px;
+  font-size: 1.0625rem;
   input:checked + label {
     background: linear-gradient(0.25turn, #88994c, #d1d1d1, #fff);
   }
@@ -177,7 +178,7 @@ const TasteInputWrapper = styled.div`
   display: grid;
   grid-template-row: 110px 110px 110px;
   gap: 15px;
-  font-size: 17px;
+  font-size: 1.0625rem;
   input:checked + label {
     background: linear-gradient(0.25turn, #88994c, #d1d1d1, #fff);
   }
@@ -187,7 +188,7 @@ const InfoInputWrapper = styled.div`
   display: grid;
   grid-auto-flow: rows;
   gap: 5px;
-  font-size: 17px;
+  font-size: 1.0625rem;
 `
 const InfoInput = styled.input`
   border: none;
@@ -216,7 +217,7 @@ const RadioInputWrapper = styled.div`
   display: grid;
   grid-auto-flow: column;
   gap: 20px;
-  font-size: 17px;
+  font-size: 1.0625rem;
   input:checked + label {
     color: #88994c;
   }

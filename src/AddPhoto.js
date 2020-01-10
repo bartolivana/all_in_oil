@@ -3,7 +3,6 @@ import styled from 'styled-components/macro'
 import axios from 'axios'
 import BtnCam from './img/BtnCamera.svg'
 import BgLogo from './img/AllInOilLogo.png'
-
 import { Redirect } from 'react-router-dom'
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
@@ -60,7 +59,7 @@ export default function AddPhoto({ image, setImage }) {
         <BtnCamera src={BtnCam} alt="" width="50px" height="50px" />
       </button>
 
-      {image ? <Redirect to="create"></Redirect> : ''}
+      {image ? <Redirect to="create_evaluation"></Redirect> : ''}
     </Grid>
   )
 }
