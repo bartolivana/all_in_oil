@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import BgLogo from './img/AllInOilLogo.png'
 
-export default function EvaluationInput({ onSubmit, image }) {
+export default function FormEvaluation({ onSubmit, image }) {
   function handleSubmit(event) {
     event.preventDefault()
     const id = Math.round(Math.random() * 400)
@@ -233,6 +233,6 @@ const BtnSave = styled.button`
   font-size: 18px;
 `
 
-EvaluationInput.propTypes = {
+FormEvaluation.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
