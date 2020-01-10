@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import styled from 'styled-components/macro'
 import FormEvaluation from './FormEvaluation'
-import Evaluation from './Evaluation'
+
 import Navigation from './Navigation'
 import AddPhoto from './AddPhoto'
 import Header from './Header'
 import HowToTaste from './HowToTaste'
+import List from './List'
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 
@@ -59,12 +59,7 @@ export default function App() {
           <FormEvaluation image={image} onSubmit={handleFormSubmit} />
         </Route>
         <Route path="/list">
-          <EvaluationList>
-            <ListTitle>Your oils:</ListTitle>
-            {evaluations.map(evaluation => (
-              <Evaluation {...evaluation} key={evaluation.id} />
-            ))}
-          </EvaluationList>
+          <List evaluations={evaluations} />
         </Route>
         <Route path="/how_to_taste_olive_oli">
           <HowToTaste />
@@ -94,17 +89,3 @@ export default function App() {
     setNavIsOpen(!navIsOpen)
   }
 }
-
-const EvaluationList = styled.div`
-  margin: 10px auto 0 0;
-  display: grid;
-  grid-template-rows: 1 fr 1fr 1fr;
-  gap: 15px;
-  text-align: center;
-`
-
-const ListTitle = styled.h1`
-  margin-top: 60px;
-  font-family: 'Amatic SC', sans-serif;
-  color: #5f5e5c;
-`

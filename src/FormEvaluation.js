@@ -24,7 +24,6 @@ export default function FormEvaluation({ onSubmit, image }) {
     )
 
     onSubmit({ ...data, fragrants, taste, id, image })
-    console.log(data)
     form.reset()
     window.location.assign(window.location.origin + '/list')
   }
