@@ -1,11 +1,11 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
-import EvaluationInput from './EvaluationInput'
+import FormEvaluation from './FormEvaluation'
 
 export default {
-  title: 'EvaluationInput'
+  title: 'FormEvaluation'
 }
 
 export const example = () => (
-  <EvaluationInput onSubmit={action('onSubmit')}></EvaluationInput>
+  <FormEvaluation onSubmit={action('onSubmit')}></FormEvaluation>
 )

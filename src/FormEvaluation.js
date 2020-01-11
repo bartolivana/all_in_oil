@@ -84,7 +84,6 @@ export default function FormEvaluation({ onSubmit, image }) {
               name="producer"
               id="producer"
               placeholder="e.g. Giacomo Grassi"
-              required="producer"
             />
 
             <label htmlFor="region">Country/Region:</label>
@@ -94,6 +93,9 @@ export default function FormEvaluation({ onSubmit, image }) {
               id="region"
               placeholder="e.g. Italy, Tuscany"
             />
+
+            <label htmlFor="price">Price:</label>
+            <InfoInput type="number" name="price" id="price" placeholder="€" />
 
             <label htmlFor="vintage">Year:</label>
             <InfoInput
@@ -122,9 +124,15 @@ export default function FormEvaluation({ onSubmit, image }) {
         </>
 
         <RadioInputWrapper>
-          <input value="liked" type="radio" name="like" id="like" />
+          <input required value="liked" type="radio" name="like" id="like" />
           <label htmlFor="like">Like</label>
-          <input value="disliked" type="radio" name="like" id="dislike" />
+          <input
+            required
+            value="disliked"
+            type="radio"
+            name="like"
+            id="dislike"
+          />
           <label htmlFor="dislike">Dislike</label>
         </RadioInputWrapper>
 

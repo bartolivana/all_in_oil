@@ -4,13 +4,27 @@ import PropTypes from 'prop-types'
 import evaluationFooter from './img/CardFooter.png'
 import bgLogo from './img/AllInOilLogo.png'
 
-export default function Evaluation(evaluation) {
+export default function Evaluation({ evaluation, handleRemoveClick }) {
   const [isHidden, setIsHidden] = useState(true)
 
   return (
     <EvaluationStyled>
       <EvaluationHeader onClick={toggleIsHidden}>
-        <OilImg src={evaluation.image || bgLogo} alt="photo of the olive oil" />
+        <OilImg
+          src={evaluation.image || bgLogo}
+          alt="photo of the olive oil"
+          style={{
+            width: isHidden ? '100px' : '150px',
+            height: isHidden ? '100px' : '150px'
+          }}
+        />
+        <button
+          className="deleteButton"
+          onClick={event => handleRemoveClick(event, evaluation.id)}
+        >
+          X
+        </button>
+
         <ImgSubHeader src={evaluationFooter} alt="green watercolor effect" />
         <Title>{evaluation.name}</Title>
       </EvaluationHeader>
@@ -89,6 +103,17 @@ const EvaluationHeader = styled.section`
   grid-auto-flow: column;
   align-items:center;
   justify-content-center;
+
+  .deleteButton{
+    position:absolute;
+    top:5px;
+    right:5px;
+    border:none;
+    border-radius:10px;
+    background:crimson;
+    opacity: 0.7;
+    color:#fff;
+  }
 `
 const OilImg = styled.img`
   z-index: 1;
