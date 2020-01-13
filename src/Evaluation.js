@@ -61,6 +61,14 @@ export default function Evaluation({ evaluation, handleRemoveClick }) {
                 <TextValue>{evaluation.region}</TextValue>
               </>
             )}
+            {evaluation.price === '' || (
+              <>
+                {' '}
+                <Text>Price:</Text>
+                <TextValue>{evaluation.price}</TextValue>
+              </>
+            )}
+
             {evaluation.vintage === '' || (
               <>
                 {' '}
@@ -97,22 +105,25 @@ const EvaluationStyled = styled.div`
   opacity: 0.8;
   background-color: #fff;
   position: relative;
+
+  section {
+    padding: 5px;
+  }
 `
 const EvaluationHeader = styled.section`
   display: grid;
   grid-auto-flow: column;
-  align-items:center;
-  justify-content-center;
+  align-items: center;
 
-  .deleteButton{
-    position:absolute;
-    top:5px;
-    right:5px;
-    border:none;
-    border-radius:10px;
-    background:crimson;
+  .deleteButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    border-radius: 10px;
+    background: crimson;
     opacity: 0.7;
-    color:#fff;
+    color: #fff;
   }
 `
 const OilImg = styled.img`
@@ -133,14 +144,11 @@ const ImgSubHeader = styled.img`
 `
 const Title = styled.h2`
   color: #5f5e5c;
-  text-align: center;
   font-family: 'Amatic SC', sans-serif;
   font-size: 1.2rem;
 `
 const TextSubtitle = styled.h3`
-  font-weight: bold;
   font-size: 1.1rem;
-  margin: 20px;
 `
 const Text = styled.p`
   margin: 10px 20px;
@@ -150,12 +158,11 @@ const Text = styled.p`
 const TextValue = styled.span`
   font-weight: bold;
   font-family: 'Amatic SC', sans-serif;
-  color: #000;
-  padding: 10px;
+  padding: 5px;
 `
 
 Evaluation.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   like: PropTypes.string,
   fragrants: PropTypes.array,
   taste: PropTypes.array,

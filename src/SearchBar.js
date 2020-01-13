@@ -3,10 +3,20 @@ import styled from 'styled-components/macro'
 
 export default function SearchBar({ handleInputChange }) {
   return (
-    <InputStyled type="text" onChange={event => handleInputChange(event)} />
+    <InputStyled
+      placeholder="🔎"
+      id="searchBar"
+      onChange={event => handleInputChange(event)}
+    />
   )
 }
 const InputStyled = styled.input`
   justify-self: center;
-  width: 100px;
+  grid-auto-flow: column;
+  width: 200px;
+  height: 30px;
+  border: none;
+  border-bottom: 2px solid #d1d1d1;
+  font-size: 1rem;
+  opacity: 0.6;
 `

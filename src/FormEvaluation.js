@@ -145,14 +145,12 @@ export default function FormEvaluation({ onSubmit, image }) {
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 0px auto 50px auto;
+  margin-bottom: 50px;
 `
 const OilImg = styled.img`
   width: 150px;
   height: 150px;
   border-radius: 150px;
-  marginbottom: 40px;
-  border: 1px;
   margin: 30px auto 0 auto;
 `
 const SimpleInput = styled.input`
@@ -166,14 +164,13 @@ const SimpleInput = styled.input`
 `
 const Title = styled.p`
   font-size: 0.9rem;
-  margin: 40px 30px;
+  margin: 30px;
   text-align: center;
 `
 const FragrantInputWrapper = styled.div`
   margin: 10px auto;
   display: grid;
   grid-template-columns: 100px 100px;
-  grid-template-rows: 1 fr 1fr 1fr;
   gap: 20px;
   font-size: 1.0625rem;
   input:checked + label {
@@ -237,7 +234,7 @@ const BtnSave = styled.button`
   border-radius: 20px;
   background: linear-gradient(#d1d1d1, #fff);
   font-family: monospace;
-  font-size: 18px;
+  font-size: 1rem;
 `
 
 FormEvaluation.propTypes = {

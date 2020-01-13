@@ -8,12 +8,15 @@ export default function EvaluationList({ evaluations, handleRemoveClick }) {
   return (
     <ListStyled>
       <ListTitle>Your Oils:</ListTitle>
+
       <SearchBar handleInputChange={event => setinput(event.target.value)} />
       {evaluations
         .filter(
           evaluation =>
             evaluation.name.toLowerCase().includes(input.toLowerCase()) ||
-            evaluation.producer.toLowerCase().includes(input.toLowerCase())
+            evaluation.producer.toLowerCase().includes(input.toLowerCase()) ||
+            evaluation.region.toLowerCase().includes(input.toLowerCase()) ||
+            evaluation.cultivar.toLowerCase().includes(input.toLowerCase())
         )
         .map(evaluation => (
           <Evaluation
@@ -34,7 +37,7 @@ const ListStyled = styled.div`
 `
 
 const ListTitle = styled.h1`
-  margin-top: 60px;
+  margin: 60px 0 5px 0;
   font-family: 'Amatic SC', sans-serif;
   color: #5f5e5c;
 `
