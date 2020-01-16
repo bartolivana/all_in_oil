@@ -3,27 +3,36 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import BgLogo from './img/AllInOilLogo.png'
 
-export default function EvaluationInput({ onSubmit, image }) {
+export default function FormEvaluation({ onSubmit, image }) {
   function handleSubmit(event) {
+    event.preventDefault()
     const id = Math.round(Math.random() * 400)
     const form = event.target
     const formData = new FormData(form)
     const data = Object.fromEntries(formData)
-    const fragrants = ['hay', 'apple', 'almond', 'artichoke', 'fruit'].filter(
-      name => data[name] === 'on'
-    )
+    const fragrants = [
+      'hay',
+      'apple',
+      'almond',
+      'artichoke',
+      'fruit',
+      'tomato'
+    ].filter(name => data[name] === 'on')
+
     const taste = ['bitter', 'spicy', 'astringent'].filter(
       name => data[name] === 'on'
     )
 
     onSubmit({ ...data, fragrants, taste, id, image })
     form.reset()
+    window.location.assign(window.location.origin + '/list')
   }
 
   return (
     <>
-      <FormWrapper action="/list" onSubmit={handleSubmit}>
+      <FormWrapper onSubmit={handleSubmit}>
         <OilImg src={image || BgLogo} alt="" />
+        <Title>What's the name of your oil?</Title>
         <SimpleInput
           name="name"
           placeholder="Name of your Oil"
@@ -69,16 +78,15 @@ export default function EvaluationInput({ onSubmit, image }) {
           <Title>Gahter information:</Title>
 
           <InfoInputWrapper>
-            <label htmlFor="producer">Producer</label>
+            <label htmlFor="producer">Producer:</label>
             <InfoInput
               type="text"
               name="producer"
               id="producer"
               placeholder="e.g. Giacomo Grassi"
-              required="producer"
             />
 
-            <label htmlFor="region">Country/Region</label>
+            <label htmlFor="region">Country/Region:</label>
             <InfoInput
               type="text"
               name="region"
@@ -86,7 +94,10 @@ export default function EvaluationInput({ onSubmit, image }) {
               placeholder="e.g. Italy, Tuscany"
             />
 
-            <label htmlFor="vintage">Vintage</label>
+            <label htmlFor="price">Price:</label>
+            <InfoInput type="number" name="price" id="price" placeholder="€" />
+
+            <label htmlFor="vintage">Year:</label>
             <InfoInput
               type="number"
               name="vintage"
@@ -94,7 +105,7 @@ export default function EvaluationInput({ onSubmit, image }) {
               placeholder="e.g. 2016"
             />
 
-            <label htmlFor="classification">Classification</label>
+            <label htmlFor="classification">Classification:</label>
             <InfoInput
               type="text"
               name="classification"
@@ -102,7 +113,7 @@ export default function EvaluationInput({ onSubmit, image }) {
               placeholder="e.g. Extra Virgin"
             />
 
-            <label htmlFor="cultivar">Cultivars</label>
+            <label htmlFor="cultivar">Cultivar/variety:</label>
             <InfoInput
               type="text"
               name="cultivar"
@@ -113,9 +124,15 @@ export default function EvaluationInput({ onSubmit, image }) {
         </>
 
         <RadioInputWrapper>
-          <input value="liked" type="radio" name="like" id="like" />
+          <input required value="liked" type="radio" name="like" id="like" />
           <label htmlFor="like">Like</label>
-          <input value="disliked" type="radio" name="like" id="dislike" />
+          <input
+            required
+            value="disliked"
+            type="radio"
+            name="like"
+            id="dislike"
+          />
           <label htmlFor="dislike">Dislike</label>
         </RadioInputWrapper>
 
@@ -128,36 +145,34 @@ export default function EvaluationInput({ onSubmit, image }) {
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 0px auto 50px auto;
+  margin-bottom: 50px;
 `
 const OilImg = styled.img`
   width: 150px;
   height: 150px;
   border-radius: 150px;
-  marginbottom: 40px;
-  border: 1px;
   margin: 30px auto 0 auto;
 `
 const SimpleInput = styled.input`
   border: none;
   border-bottom: 1.5px solid #d1d1d1;
-  font-size: 19px;
+  font-size: 1.1875rem;
   text-align: center;
   opacity: 0.4;
   margin: 10px auto 20px auto;
   background: #f5f5f5;
 `
 const Title = styled.p`
-  font-size: 15px;
-  margin: 10px 30px;
+  font-size: 0.9rem;
+  margin: 30px;
+  text-align: center;
 `
 const FragrantInputWrapper = styled.div`
   margin: 10px auto;
   display: grid;
   grid-template-columns: 100px 100px;
-  grid-template-rows: 1 fr 1fr 1fr;
   gap: 20px;
-  font-size: 17px;
+  font-size: 1.0625rem;
   input:checked + label {
     background: linear-gradient(0.25turn, #88994c, #d1d1d1, #fff);
   }
@@ -167,7 +182,7 @@ const TasteInputWrapper = styled.div`
   display: grid;
   grid-template-row: 110px 110px 110px;
   gap: 15px;
-  font-size: 17px;
+  font-size: 1.0625rem;
   input:checked + label {
     background: linear-gradient(0.25turn, #88994c, #d1d1d1, #fff);
   }
@@ -177,7 +192,7 @@ const InfoInputWrapper = styled.div`
   display: grid;
   grid-auto-flow: rows;
   gap: 5px;
-  font-size: 17px;
+  font-size: 1.0625rem;
 `
 const InfoInput = styled.input`
   border: none;
@@ -206,7 +221,7 @@ const RadioInputWrapper = styled.div`
   display: grid;
   grid-auto-flow: column;
   gap: 20px;
-  font-size: 17px;
+  font-size: 1.0625rem;
   input:checked + label {
     color: #88994c;
   }
@@ -217,11 +232,11 @@ const BtnSave = styled.button`
   background-color: #88994c;
   border: none;
   border-radius: 20px;
-  background: linear-gradient(#88994c, #fff);
+  background: linear-gradient(#d1d1d1, #fff);
   font-family: monospace;
-  font-size: 18px;
+  font-size: 1rem;
 `
 
-EvaluationInput.propTypes = {
+FormEvaluation.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }

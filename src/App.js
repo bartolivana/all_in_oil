@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import styled from 'styled-components/macro'
-import EvaluationInput from './EvaluationInput'
-import Evaluation from './Evaluation'
+import FormEvaluation from './FormEvaluation'
 import Navigation from './Navigation'
 import AddPhoto from './AddPhoto'
 import Header from './Header'
+import HowToTaste from './HowToTaste'
+import EvaluationList from './EvaluationList'
 
-function App() {
+export default function App() {
   //localStorage.clear()
-  let evalDataFromLocalStorage = JSON.parse(localStorage.getItem('cards'))
-  const [cards, setCards] = useState(evalDataFromLocalStorage || [])
+  let evalDataFromLocalStorage = JSON.parse(localStorage.getItem('evaluations'))
+  const [evaluations, setEvaluations] = useState(evalDataFromLocalStorage || [])
   const [navIsOpen, setNavIsOpen] = useState(false)
   const [image, setImage] = useState('')
   saveEvaluationToLocalStorage()
@@ -21,50 +21,44 @@ function App() {
       <Navigation toggleNavOpen={toggleNavOpen} navIsOpen={navIsOpen} />
 
       <Switch>
-        <Route path="/home">
+        <Route exact path="/">
           <AddPhoto setImage={setImage} image={image} />
         </Route>
-        <Route exact path="/create">
-          <EvaluationInput image={image} onSubmit={handleFormSubmit} />
+        <Route path="/create_evaluation">
+          <FormEvaluation image={image} onSubmit={handleFormSubmit} />
         </Route>
         <Route path="/list">
-          <HistoryList>
-            <ListTitle>Your oils:</ListTitle>
-            {cards.map(card => (
-              <Evaluation {...card} key={card.id} />
-            ))}
-          </HistoryList>
+          <EvaluationList
+            evaluations={evaluations}
+            handleRemoveClick={(event, id) => deleteEvaluation(event, id)}
+          />
         </Route>
-        <Route path="/how_to_taste_olive_oli"></Route>
+        <Route path="/how_to_taste_olive_oli">
+          <HowToTaste />
+        </Route>
       </Switch>
     </Router>
   )
 
-  function handleFormSubmit(data) {
-    setCards([data, ...cards])
+  function handleFormSubmit(newEvaluations) {
+    setEvaluations([newEvaluations, ...evaluations])
   }
 
   function saveEvaluationToLocalStorage() {
-    localStorage.setItem('cards', JSON.stringify(cards))
+    localStorage.setItem('evaluations', JSON.stringify(evaluations))
+  }
+
+  function deleteEvaluation(id) {
+    const selectedEvaluation = evaluations.filter(item => item.id === id)
+    const index = evaluations.indexOf(...selectedEvaluation)
+
+    setEvaluations([
+      ...evaluations.slice(0, index),
+      ...evaluations.slice(index + 1)
+    ])
   }
 
   function toggleNavOpen() {
     setNavIsOpen(!navIsOpen)
   }
 }
-
-export default App
-
-const HistoryList = styled.div`
-  margin: 10px auto 0 0;
-  display: grid;
-  grid-template-rows: 1 fr 1fr 1fr;
-  gap: 15px;
-  text-align: center;
-`
-
-const ListTitle = styled.h1`
-  margin-top: 60px;
-  font-family: 'Amatic SC', sans-serif;
-  color: #5f5e5c;
-`

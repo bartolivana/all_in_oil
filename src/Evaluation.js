@@ -1,77 +1,113 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import HeaderImg from './img/Header.png'
-export default function Evaluation(card) {
+import evaluationFooter from './img/CardFooter.png'
+import bgLogo from './img/AllInOilLogo.png'
+import trash from './img/trashIcon.svg'
+
+export default function Evaluation({ evaluation, handleRemoveClick }) {
   const [isHidden, setIsHidden] = useState(true)
 
   return (
-    <Cardstyle>
-      <CardHeader onClick={toggleIsHidden}>
+    <EvaluationStyled>
+      <EvaluationHeader onClick={toggleIsHidden}>
         <OilImg
-          src={card.image}
-          alt="photo of the olive oil bottle with label"
+          src={evaluation.image || bgLogo}
+          alt="photo of the olive oil"
+          style={{
+            width: isHidden ? '100px' : '150px',
+            height: isHidden ? '100px' : '150px'
+          }}
         />
+        {/*  <button
+          className="deleteButton"
+          // onClick={event => handleRemoveClick(event, evaluation.id)}
+          onClick={event =>
+            window.confirm(
+              'Are you sure you wish to delete your Evaluation?'
+            ) && handleRemoveClick(evaluation.id)
+          }
+        > */}
+        <img
+          src={trash}
+          alt="trash can icon"
+          className="deleteButton"
+          // onClick={event => handleRemoveClick(event, evaluation.id)}
+          onClick={event =>
+            window.confirm(
+              'Are you sure you wish to delete your Evaluation?'
+            ) && handleRemoveClick(evaluation.id)
+          }
+        />
+        {/* </button> */}
 
-        <ImgSubHeader src={HeaderImg} alt="green watercolor effect" />
-        <Title>{card.name}</Title>
-      </CardHeader>
+        <ImgSubHeader src={evaluationFooter} alt="green watercolor effect" />
+        <Title>{evaluation.name}</Title>
+      </EvaluationHeader>
 
       {!isHidden && (
         <>
           <TextSubtitle>
-            You've tasted {card.name} and generally {card.like} it!
+            You've tasted {evaluation.name} and generally {evaluation.like} it!
           </TextSubtitle>
-          {card.fragrants.join(', ') === '' || (
+          {evaluation.fragrants.join(', ') === '' || (
             <>
               <Text> Fragrance nuances:</Text>
-              <TextValue>{card.fragrants.join(', ')}</TextValue>
+              <TextValue>{evaluation.fragrants.join(', ')}</TextValue>
             </>
           )}
 
-          {card.taste.join(', ') === '' || (
+          {evaluation.taste.join(', ') === '' || (
             <>
               {' '}
               <Text>Taste nuances:</Text>
-              <TextValue>{card.taste.join(', ')}</TextValue>
+              <TextValue>{evaluation.taste.join(', ')}</TextValue>
             </>
           )}
           <section>
-            {card.producer === '' || (
+            {evaluation.producer === '' || (
               <>
                 <Text>Producer:</Text>
-                <TextValue>{card.producer}</TextValue>
+                <TextValue>{evaluation.producer}</TextValue>
               </>
             )}
-            {card.region === '' || (
+            {evaluation.region === '' || (
               <>
                 <Text>Region:</Text>
-                <TextValue>{card.region}</TextValue>
+                <TextValue>{evaluation.region}</TextValue>
               </>
             )}
-            {card.vintage === '' || (
+            {evaluation.price === '' || (
+              <>
+                {' '}
+                <Text>Price:</Text>
+                <TextValue>{evaluation.price}</TextValue>
+              </>
+            )}
+
+            {evaluation.vintage === '' || (
               <>
                 {' '}
                 <Text>Vintage:</Text>
-                <TextValue>{card.vintage}</TextValue>
+                <TextValue>{evaluation.vintage}</TextValue>
               </>
             )}
-            {card.classification === '' || (
+            {evaluation.classification === '' || (
               <>
                 <Text>Classification:</Text>
-                <TextValue>{card.classification}</TextValue>
+                <TextValue>{evaluation.classification}</TextValue>
               </>
             )}
-            {card.cultivar === '' || (
+            {evaluation.cultivar === '' || (
               <>
                 <Text>Cultivar:</Text>
-                <TextValue>{card.cultivar}</TextValue>
+                <TextValue>{evaluation.cultivar}</TextValue>
               </>
             )}
           </section>
         </>
       )}
-    </Cardstyle>
+    </EvaluationStyled>
   )
 
   function toggleIsHidden() {
@@ -79,44 +115,53 @@ export default function Evaluation(card) {
   }
 }
 
-const Cardstyle = styled.div`
+const EvaluationStyled = styled.div`
   display: grid;
   margin: 10px 20px;
   opacity: 0.8;
   background-color: #fff;
-  filter: drop-shadow(0 1px 12px #dfe3d1);
   position: relative;
+
+  section {
+    padding: 5px;
+  }
 `
-const CardHeader = styled.section`
+const EvaluationHeader = styled.section`
   display: grid;
   grid-auto-flow: column;
-  align-items:center;
-  justify-content-center;
+  align-items: center;
+
+  .deleteButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 23px;
+    height: 23px;
+  }
 `
 const OilImg = styled.img`
   z-index: 1;
   width: 150px;
   height: 150px;
   border-radius: 150px;
-  margin: 10px 0 0 20px;
+  margin: 5px 10px;
 `
 const ImgSubHeader = styled.img`
   width: 100%;
+  opacity: 0.7;
   position: absolute;
-  top: 0;
-  height: 80px;
+  bottom: 0;
+  height: 60px;
   objectfit: cover;
+  z-index: -10;
 `
-
 const Title = styled.h2`
-  text-align: center;
-  font-family: 'Amatic SC', sans-serif;
   color: #5f5e5c;
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 1.2rem;
 `
 const TextSubtitle = styled.h3`
-  font-weight: bold;
-  margin: 20px;
-  font-size: 1.5 rem;
+  font-size: 1.1rem;
 `
 const Text = styled.p`
   margin: 10px 20px;
@@ -126,11 +171,17 @@ const Text = styled.p`
 const TextValue = styled.span`
   font-weight: bold;
   font-family: 'Amatic SC', sans-serif;
-  color: #000;
-  padding: 10px;
+  padding: 5px;
 `
 
 Evaluation.propTypes = {
-  name: PropTypes.string.isRequired,
-  like: PropTypes.string
+  name: PropTypes.string,
+  like: PropTypes.string,
+  fragrants: PropTypes.array,
+  taste: PropTypes.array,
+  producer: PropTypes.string,
+  region: PropTypes.string,
+  vintage: PropTypes.string,
+  classification: PropTypes.string,
+  cultivar: PropTypes.string
 }
