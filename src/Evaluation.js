@@ -19,16 +19,27 @@ export default function Evaluation({ evaluation, handleRemoveClick }) {
             height: isHidden ? '100px' : '150px'
           }}
         />
+        {/*  <button
+          className="deleteButton"
+          // onClick={event => handleRemoveClick(event, evaluation.id)}
+          onClick={event =>
+            window.confirm(
+              'Are you sure you wish to delete your Evaluation?'
+            ) && handleRemoveClick(evaluation.id)
+          }
+        > */}
         <img
           src={trash}
           alt="trash can icon"
           className="deleteButton"
+          // onClick={event => handleRemoveClick(event, evaluation.id)}
           onClick={event =>
             window.confirm(
               'Are you sure you wish to delete your Evaluation?'
             ) && handleRemoveClick(evaluation.id)
           }
         />
+        {/* </button> */}
 
         <ImgSubHeader src={evaluationFooter} alt="green watercolor effect" />
         <Title>{evaluation.name}</Title>
