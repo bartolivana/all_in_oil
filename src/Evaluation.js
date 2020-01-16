@@ -4,8 +4,14 @@ import PropTypes from 'prop-types'
 import evaluationFooter from './img/CardFooter.png'
 import bgLogo from './img/AllInOilLogo.png'
 import trash from './img/trashIcon.svg'
+import editIcon from './img/editIcon.svg'
+import { Link, useLocation } from 'react-router-dom'
 
-export default function Evaluation({ evaluation, handleRemoveClick }) {
+export default function Evaluation({
+  evaluation,
+  handleRemoveClick,
+  handleEditClick
+}) {
   const [isHidden, setIsHidden] = useState(true)
 
   return (
@@ -30,6 +36,14 @@ export default function Evaluation({ evaluation, handleRemoveClick }) {
             ) && handleRemoveClick(evaluation.id)
           }
         />
+        {/*      <Link to={`create_evaluation/${evaluation.id}`}> */}
+        <img
+          src={editIcon}
+          alt="pen icon"
+          className="editButton"
+          //onClick={event => handleEditClick(evaluation.id)}
+        />
+        {/*  </Link> */}
 
         <ImgSubHeader src={evaluationFooter} alt="green watercolor effect" />
         <Title>{evaluation.name}</Title>
@@ -125,8 +139,15 @@ const EvaluationHeader = styled.section`
     position: absolute;
     top: 5px;
     right: 5px;
-    width: 23px;
-    height: 23px;
+    width: 18px;
+    height: 18px;
+  }
+  .editButton {
+    position: absolute;
+    top: 5px;
+    right: 28px;
+    width: 18px;
+    height: 18px;
   }
 `
 const OilImg = styled.img`

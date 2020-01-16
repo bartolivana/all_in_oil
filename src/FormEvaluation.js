@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import BgLogo from './img/AllInOilLogo.png'
+import { useLocation } from 'react-router-dom'
 
 export default function FormEvaluation({ onSubmit, image }) {
   function handleSubmit(event) {
@@ -27,17 +28,34 @@ export default function FormEvaluation({ onSubmit, image }) {
     form.reset()
     window.location.assign(window.location.origin + '/list')
   }
+  /*   const [editInput, setEditInput] = useState({ name: '' })
+  const location = useLocation()
+  const pathname = location.pathname
+  const editedId = pathname.substring(19)
+  const editedOilArray = evaluations.filter(
+    evaluation => evaluation.id == editedId
+  )
+  const editedOil = editedOilArray[0]
+  useEffect(() => {
+    editedOil && setEditInput(editedOil)
+  }, [editedOil])
+
+  console.log(editedOil) */
 
   return (
     <>
       <FormWrapper onSubmit={handleSubmit}>
         <OilImg src={image || BgLogo} alt="" />
         <Title>What's the name of your oil?</Title>
+
         <SimpleInput
           name="name"
           placeholder="Name of your Oil"
           required="name"
+          //value={editInput.name}
+          // onChange={e => setEditInput(e.target.value)}
         />
+
         <>
           <Title>Use your nose:</Title>
           <FragrantInputWrapper>

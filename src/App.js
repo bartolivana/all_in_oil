@@ -25,12 +25,17 @@ export default function App() {
           <AddPhoto setImage={setImage} image={image} />
         </Route>
         <Route path="/create_evaluation">
-          <FormEvaluation image={image} onSubmit={handleFormSubmit} />
+          <FormEvaluation
+            //evaluations={evaluations}
+            image={image}
+            onSubmit={handleFormSubmit}
+          />
         </Route>
         <Route path="/list">
           <EvaluationList
             evaluations={evaluations}
             handleRemoveClick={(event, id) => deleteEvaluation(event, id)}
+            //handleEditClick={(event, id) => editEvaluation(event, id)}
           />
         </Route>
         <Route path="/how_to_taste_olive_oli">
@@ -41,12 +46,33 @@ export default function App() {
   )
 
   function handleFormSubmit(newEvaluations) {
-    setEvaluations([newEvaluations, ...evaluations])
+    /*  const editedOil = evaluations.filter(
+      evaluation => evaluation.id == newEvaluations.id
+    )
+    const index = evaluations.indexOf(editedOil)
+
+    editedOil
+      ? setEvaluations([
+          ...evaluations.slice(0, index),
+          { editedOil },
+          ...evaluations.slice(index + 1)
+        ])
+      : */ setEvaluations(
+      [newEvaluations, ...evaluations]
+    )
   }
 
   function saveEvaluationToLocalStorage() {
     localStorage.setItem('evaluations', JSON.stringify(evaluations))
   }
+
+  /*  function editEvaluation(id) {
+    console.log('edit')
+    const selectedEvaluation = evaluations.filter(item => item.id === id)
+    const index = evaluations.indexOf(...selectedEvaluation)
+
+    setEvaluations([...evaluations.slice(0, index), ...evaluations.slice()])
+  } */
 
   function deleteEvaluation(id) {
     const selectedEvaluation = evaluations.filter(item => item.id === id)
