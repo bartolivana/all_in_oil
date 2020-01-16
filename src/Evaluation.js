@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import evaluationFooter from './img/CardFooter.png'
 import bgLogo from './img/AllInOilLogo.png'
+import trash from './img/trashIcon.svg'
 
 export default function Evaluation({ evaluation, handleRemoveClick }) {
   const [isHidden, setIsHidden] = useState(true)
@@ -18,12 +19,27 @@ export default function Evaluation({ evaluation, handleRemoveClick }) {
             height: isHidden ? '100px' : '150px'
           }}
         />
-        <button
+        {/*  <button
           className="deleteButton"
-          onClick={event => handleRemoveClick(event, evaluation.id)}
-        >
-          X
-        </button>
+          // onClick={event => handleRemoveClick(event, evaluation.id)}
+          onClick={event =>
+            window.confirm(
+              'Are you sure you wish to delete your Evaluation?'
+            ) && handleRemoveClick(evaluation.id)
+          }
+        > */}
+        <img
+          src={trash}
+          alt="trash can icon"
+          className="deleteButton"
+          // onClick={event => handleRemoveClick(event, evaluation.id)}
+          onClick={event =>
+            window.confirm(
+              'Are you sure you wish to delete your Evaluation?'
+            ) && handleRemoveClick(evaluation.id)
+          }
+        />
+        {/* </button> */}
 
         <ImgSubHeader src={evaluationFooter} alt="green watercolor effect" />
         <Title>{evaluation.name}</Title>
@@ -119,11 +135,8 @@ const EvaluationHeader = styled.section`
     position: absolute;
     top: 5px;
     right: 5px;
-    border: none;
-    border-radius: 10px;
-    background: crimson;
-    opacity: 0.7;
-    color: #fff;
+    width: 23px;
+    height: 23px;
   }
 `
 const OilImg = styled.img`

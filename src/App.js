@@ -48,8 +48,7 @@ export default function App() {
     localStorage.setItem('evaluations', JSON.stringify(evaluations))
   }
 
-  function deleteEvaluation(event, id) {
-    event.stopPropagation()
+  function deleteEvaluation(id) {
     const selectedEvaluation = evaluations.filter(item => item.id === id)
     const index = evaluations.indexOf(...selectedEvaluation)
 
