@@ -54,33 +54,27 @@ const NavigationStyled = styled.nav`
 `
 
 const NavToggle = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   transform: translateX(-100%);
   background: none;
   border: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   top: 60px;
   left: -30px;
 `
 
 const Burger = styled.div`
   position: absolute;
-  font-size: 30px;
-  border: 0;
-  cursor: default;
-  background: none;
-  margin: 0;
-  padding: 0;
 `
 
 const NavList = styled.ul`
+  display: flex;
+  flex-direction: column;
   list-style: none;
   margin: 50px;
   padding: 0;
-  display: flex;
-  flex-direction: column;
   height: 100vh;
   width: 200px;
 `

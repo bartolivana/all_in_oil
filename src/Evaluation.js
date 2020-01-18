@@ -1,17 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import PropTypes from 'prop-types'
 import evaluationFooter from './img/CardFooter.png'
 import bgLogo from './img/AllInOilLogo.png'
 import trash from './img/trashIcon.svg'
-import editIcon from './img/editIcon.svg'
-import { Link, useLocation } from 'react-router-dom'
+//import editIcon from './img/editIcon.svg'
 
-export default function Evaluation({
-  evaluation,
-  handleRemoveClick,
-  handleEditClick
-}) {
+export default function Evaluation({ evaluation, handleRemoveClick }) {
   const [isHidden, setIsHidden] = useState(true)
 
   return (
@@ -36,14 +30,6 @@ export default function Evaluation({
             ) && handleRemoveClick(evaluation.id)
           }
         />
-        {/*      <Link to={`create_evaluation/${evaluation.id}`}> */}
-        <img
-          src={editIcon}
-          alt="pen icon"
-          className="editButton"
-          //onClick={event => handleEditClick(evaluation.id)}
-        />
-        {/*  </Link> */}
 
         <ImgSubHeader src={evaluationFooter} alt="green watercolor effect" />
         <Title>{evaluation.name}</Title>
@@ -142,13 +128,6 @@ const EvaluationHeader = styled.section`
     width: 18px;
     height: 18px;
   }
-  .editButton {
-    position: absolute;
-    top: 5px;
-    right: 28px;
-    width: 18px;
-    height: 18px;
-  }
 `
 const OilImg = styled.img`
   z-index: 1;
@@ -158,13 +137,13 @@ const OilImg = styled.img`
   margin: 5px 10px;
 `
 const ImgSubHeader = styled.img`
+  z-index: -10;
   width: 100%;
+  height: 60px;
   opacity: 0.7;
   position: absolute;
   bottom: 0;
-  height: 60px;
   objectfit: cover;
-  z-index: -10;
 `
 const Title = styled.h2`
   color: #5f5e5c;
@@ -184,15 +163,3 @@ const TextValue = styled.span`
   font-family: 'Amatic SC', sans-serif;
   padding: 5px;
 `
-
-Evaluation.propTypes = {
-  name: PropTypes.string,
-  like: PropTypes.string,
-  fragrants: PropTypes.array,
-  taste: PropTypes.array,
-  producer: PropTypes.string,
-  region: PropTypes.string,
-  vintage: PropTypes.string,
-  classification: PropTypes.string,
-  cultivar: PropTypes.string
-}

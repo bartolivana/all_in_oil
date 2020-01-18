@@ -8,7 +8,7 @@ export default function HowToTaste() {
   return (
     <Step>
       <ListTitle>Three steps in olive oil tasting</ListTitle>
-      <img src={aroma} alt="" />
+      <img src={aroma} alt="glass filled with olive oil covered with hands" />
 
       <h2>Warm the olive oil in your hands.</h2>
       <p>
@@ -18,7 +18,7 @@ export default function HowToTaste() {
         releases the aroma in the oil.
       </p>
 
-      <img src={fragrance} alt="" />
+      <img src={fragrance} alt="smelling the oilve oil" />
 
       <h2>Make a note of the nose</h2>
       <p>
@@ -33,7 +33,7 @@ export default function HowToTaste() {
         hay.
       </p>
 
-      <img src={taste} alt="" />
+      <img src={taste} alt="olive oil tasting" />
       <h2>Taste the oil</h2>
       <p>
         Than you proceed to judge the flavour.To do so, take a small sip of
@@ -66,6 +66,9 @@ h2{
 p{
     text-align:justify;
     margin:10px 0;
+    font-size: 1rem;
+    padding-bottom:20px;
+ 
   }
 img{
 height:200px;

@@ -11,6 +11,34 @@ const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 export default function AddPhoto({ image, setImage }) {
   let fileInput = React.createRef()
 
+  return (
+    <Grid>
+      <LargeLogo
+        src={BgLogo}
+        alt="Logo for All in Oil"
+        width="350px"
+        height="350px"
+      />
+      <input
+        type="file"
+        name="file"
+        onChange={upload}
+        style={{ display: 'none' }}
+        ref={fileInput}
+      />
+      <label>Time to shoot your oil bottle</label>
+      <BtnCamera
+        onClick={handleClick}
+        src={BtnCam}
+        alt=""
+        width="50px"
+        height="50px"
+      />
+
+      {image ? <Redirect to="create_evaluation"></Redirect> : ''}
+    </Grid>
+  )
+
   function upload(event) {
     const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`
 
@@ -35,33 +63,6 @@ export default function AddPhoto({ image, setImage }) {
   function handleClick() {
     fileInput.current.click()
   }
-
-  return (
-    <Grid>
-      <LargeLogo
-        src={BgLogo}
-        alt="Logo for All in Oil"
-        width="350px"
-        height="350px"
-      />
-      <input
-        type="file"
-        name="file"
-        onChange={upload}
-        style={{ display: 'none' }}
-        ref={fileInput}
-      />
-      <label>Time to shoot your oil bottle</label>
-      <button
-        style={{ background: 'none', border: 'none' }}
-        onClick={handleClick}
-      >
-        <BtnCamera src={BtnCam} alt="" width="50px" height="50px" />
-      </button>
-
-      {image ? <Redirect to="create_evaluation"></Redirect> : ''}
-    </Grid>
-  )
 }
 
 const Grid = styled.div`

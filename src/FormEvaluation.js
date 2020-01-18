@@ -1,61 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
-import PropTypes from 'prop-types'
 import BgLogo from './img/AllInOilLogo.png'
-import { useLocation } from 'react-router-dom'
 
 export default function FormEvaluation({ onSubmit, image }) {
-  function handleSubmit(event) {
-    event.preventDefault()
-    const id = Math.round(Math.random() * 400)
-    const form = event.target
-    const formData = new FormData(form)
-    const data = Object.fromEntries(formData)
-    const fragrants = [
-      'hay',
-      'apple',
-      'almond',
-      'artichoke',
-      'fruit',
-      'tomato'
-    ].filter(name => data[name] === 'on')
-
-    const taste = ['bitter', 'spicy', 'astringent'].filter(
-      name => data[name] === 'on'
-    )
-
-    onSubmit({ ...data, fragrants, taste, id, image })
-    form.reset()
-    window.location.assign(window.location.origin + '/list')
-  }
-  /*   const [editInput, setEditInput] = useState({ name: '' })
-  const location = useLocation()
-  const pathname = location.pathname
-  const editedId = pathname.substring(19)
-  const editedOilArray = evaluations.filter(
-    evaluation => evaluation.id == editedId
-  )
-  const editedOil = editedOilArray[0]
-  useEffect(() => {
-    editedOil && setEditInput(editedOil)
-  }, [editedOil])
-
-  console.log(editedOil) */
-
   return (
     <>
       <FormWrapper onSubmit={handleSubmit}>
         <OilImg src={image || BgLogo} alt="" />
         <Title>What's the name of your oil?</Title>
-
         <SimpleInput
           name="name"
           placeholder="Name of your Oil"
           required="name"
-          //value={editInput.name}
-          // onChange={e => setEditInput(e.target.value)}
         />
-
         <>
           <Title>Use your nose:</Title>
           <FragrantInputWrapper>
@@ -158,6 +115,30 @@ export default function FormEvaluation({ onSubmit, image }) {
       </FormWrapper>
     </>
   )
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const id = Math.round(Math.random() * 400)
+    const form = event.target
+    const formData = new FormData(form)
+    const data = Object.fromEntries(formData)
+    const fragrants = [
+      'hay',
+      'apple',
+      'almond',
+      'artichoke',
+      'fruit',
+      'tomato'
+    ].filter(name => data[name] === 'on')
+
+    const taste = ['bitter', 'spicy', 'astringent'].filter(
+      name => data[name] === 'on'
+    )
+
+    onSubmit({ ...data, fragrants, taste, id, image })
+    form.reset()
+    window.location.assign(window.location.origin + '/list')
+  }
 }
 
 const FormWrapper = styled.form`
@@ -254,7 +235,3 @@ const BtnSave = styled.button`
   font-family: monospace;
   font-size: 1rem;
 `
-
-FormEvaluation.propTypes = {
-  onSubmit: PropTypes.func.isRequired
-}

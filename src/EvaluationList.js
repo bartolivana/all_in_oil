@@ -16,6 +16,11 @@ export default function EvaluationList({ evaluations, handleRemoveClick }) {
             evaluation.name.toLowerCase().includes(input.toLowerCase()) ||
             evaluation.producer.toLowerCase().includes(input.toLowerCase()) ||
             evaluation.region.toLowerCase().includes(input.toLowerCase()) ||
+            evaluation.price.toLowerCase().includes(input.toLowerCase()) ||
+            evaluation.vintage.toLowerCase().includes(input.toLowerCase()) ||
+            evaluation.classification
+              .toLowerCase()
+              .includes(input.toLowerCase()) ||
             evaluation.cultivar.toLowerCase().includes(input.toLowerCase())
         )
         .map(evaluation => (
