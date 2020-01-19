@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>searchICon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="129.140625%" gradientTransform="translate(0.500000,0.000000),scale(0.999986,1.000000),rotate(90.000000),scale(1.000000,1.454507),translate(-0.500000,-0.000000)" id="radialGradient-1">
+            <stop stop-color="#88994D" offset="0%"></stop>
+            <stop stop-color="#90A059" offset="48.7597656%"></stop>
+            <stop stop-color="#F1F3EA" offset="100%"></stop>
+        </radialGradient>
+        <path d="M5.20833333,11.4583333 C5.20833333,8.01145833 8.01145833,5.20833333 11.4583333,5.20833333 C14.9052083,5.20833333 17.7083333,8.01145833 17.7083333,11.4583333 C17.7083333,14.9052083 14.9052083,17.7083333 11.4583333,17.7083333 C8.01145833,17.7083333 5.20833333,14.9052083 5.20833333,11.4583333 M21.5697917,20.096875 L18.0333333,16.559375 C19.1302083,15.1489583 19.7916667,13.38125 19.7916667,11.4583333 C19.7916667,6.86354167 16.053125,3.125 11.4583333,3.125 C6.86354167,3.125 3.125,6.86354167 3.125,11.4583333 C3.125,16.053125 6.86354167,19.7916667 11.4583333,19.7916667 C13.38125,19.7916667 15.1489583,19.1302083 16.559375,18.0333333 L20.096875,21.5697917 C20.3,21.7729167 20.5666667,21.875 20.8333333,21.875 C21.1,21.875 21.3666667,21.7729167 21.5697917,21.5697917 C21.9770833,21.1625 21.9770833,20.5041667 21.5697917,20.096875" id="path-2"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.693870908">
+        <g id="searchICon" transform="translate(-3.000000, -3.000000)">
+            <g id="search">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <use id="🎨-Icon-Сolor" fill="url(#radialGradient-1)" fill-rule="evenodd" opacity="0.694124814" xlink:href="#path-2"></use>
+            </g>
+        </g>
+    </g>
+</svg>

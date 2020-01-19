@@ -3,7 +3,6 @@ import styled from 'styled-components/macro'
 import evaluationFooter from './img/CardFooter.png'
 import bgLogo from './img/AllInOilLogo.png'
 import trash from './img/trashIcon.svg'
-//import editIcon from './img/editIcon.svg'
 
 export default function Evaluation({ evaluation, handleRemoveClick }) {
   const [isHidden, setIsHidden] = useState(true)
@@ -40,14 +39,14 @@ export default function Evaluation({ evaluation, handleRemoveClick }) {
           <TextSubtitle>
             You've tasted {evaluation.name} and generally {evaluation.like} it!
           </TextSubtitle>
-          {evaluation.fragrants.join(', ') === '' || (
+          {evaluation.fragrants.join('') === '' || (
             <>
               <Text> Fragrance nuances:</Text>
               <TextValue>{evaluation.fragrants.join(', ')}</TextValue>
             </>
           )}
 
-          {evaluation.taste.join(', ') === '' || (
+          {evaluation.taste.join('') === '' || (
             <>
               {' '}
               <Text>Taste nuances:</Text>
@@ -94,6 +93,12 @@ export default function Evaluation({ evaluation, handleRemoveClick }) {
                 <TextValue>{evaluation.cultivar}</TextValue>
               </>
             )}
+            {evaluation.personalNotes === ' ' || (
+              <>
+                <Text>Notes:</Text>
+                <PersonalNote>{evaluation.personalNotes}</PersonalNote>
+              </>
+            )}
           </section>
         </>
       )}
@@ -111,6 +116,7 @@ const EvaluationStyled = styled.div`
   opacity: 0.8;
   background-color: #fff;
   position: relative;
+  max-width: 100vw;
 
   section {
     padding: 5px;
@@ -162,4 +168,8 @@ const TextValue = styled.span`
   font-weight: bold;
   font-family: 'Amatic SC', sans-serif;
   padding: 5px;
+`
+const PersonalNote = styled.span`
+  margin: 0 auto;
+  text-align: center;
 `

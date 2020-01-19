@@ -9,13 +9,13 @@ const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 
 export default function AddPhoto({ image, setImage }) {
-  let fileInput = React.createRef()
+  let imageInput = React.createRef()
 
   return (
     <Grid>
       <LargeLogo
         src={BgLogo}
-        alt="Logo for All in Oil"
+        alt="All in Oil logo"
         width="350px"
         height="350px"
       />
@@ -24,7 +24,7 @@ export default function AddPhoto({ image, setImage }) {
         name="file"
         onChange={upload}
         style={{ display: 'none' }}
-        ref={fileInput}
+        ref={imageInput}
       />
       <label>Time to shoot your oil bottle</label>
       <BtnCamera
@@ -61,7 +61,7 @@ export default function AddPhoto({ image, setImage }) {
   }
 
   function handleClick() {
-    fileInput.current.click()
+    imageInput.current.click()
   }
 }
 
@@ -78,7 +78,6 @@ const LargeLogo = styled.img`
   height: '350px';
   margin-top: 30px;
 `
-
 const BtnCamera = styled.img`
   border: 0;
   cursor: default;

@@ -3,6 +3,14 @@ import styled from 'styled-components/macro'
 import BgLogo from './img/AllInOilLogo.png'
 
 export default function FormEvaluation({ onSubmit, image }) {
+  const classificationOptions = [
+    'Extra virgin olive oil',
+    'Virgin olive oil',
+    'Olive oil',
+    'Olive pomace',
+    'Unknown'
+  ]
+
   return (
     <>
       <FormWrapper onSubmit={handleSubmit}>
@@ -54,7 +62,7 @@ export default function FormEvaluation({ onSubmit, image }) {
 
           <InfoInputWrapper>
             <label htmlFor="producer">Producer:</label>
-            <InfoInput
+            <input
               type="text"
               name="producer"
               id="producer"
@@ -62,7 +70,7 @@ export default function FormEvaluation({ onSubmit, image }) {
             />
 
             <label htmlFor="region">Country/Region:</label>
-            <InfoInput
+            <input
               type="text"
               name="region"
               id="region"
@@ -70,10 +78,10 @@ export default function FormEvaluation({ onSubmit, image }) {
             />
 
             <label htmlFor="price">Price:</label>
-            <InfoInput type="number" name="price" id="price" placeholder="€" />
+            <input type="number" name="price" id="price" placeholder="€" />
 
             <label htmlFor="vintage">Year:</label>
-            <InfoInput
+            <input
               type="number"
               name="vintage"
               id="vintage"
@@ -81,20 +89,39 @@ export default function FormEvaluation({ onSubmit, image }) {
             />
 
             <label htmlFor="classification">Classification:</label>
-            <InfoInput
-              type="text"
+            <select
+              className="select-css"
               name="classification"
               id="classification"
-              placeholder="e.g. Extra Virgin"
-            />
+            >
+              <option value="">Please choose</option>
+              {classificationOptions.map((option, index) => {
+                return (
+                  <option value={option} key={index}>
+                    {option}
+                  </option>
+                )
+              })}
+            </select>
 
             <label htmlFor="cultivar">Cultivar/variety:</label>
-            <InfoInput
+            <input
               type="text"
               name="cultivar"
               id="cultivar"
               placeholder="e.g. Pendolino"
             />
+            <label htmlFor="personalNotes">Notes</label>
+            <textarea
+              id="personalNotes"
+              name="personalNotes"
+              rows="2"
+              cols="1"
+              placeholder="Maximum 50 characters"
+              maxlength="50"
+            >
+              {' '}
+            </textarea>
           </InfoInputWrapper>
         </>
 
@@ -145,6 +172,12 @@ const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
+
+  textarea {
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+  }
 `
 const OilImg = styled.img`
   width: 150px;
@@ -192,17 +225,36 @@ const InfoInputWrapper = styled.div`
   grid-auto-flow: rows;
   gap: 5px;
   font-size: 1.0625rem;
+
+  input {
+    border: none;
+    border-bottom: 1px solid #d1d1d1;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 1.0625rem;
+    opacity: 0.4;
+    margin-bottom: 20px;
+    background: #f5f5f5;
+  }
+
+  .select-css {
+    display: block;
+    font-weight: 500;
+    border: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    appearance: none;
+    border-bottom: 1px solid #d1d1d1;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 1.0625rem;
+    opacity: 0.3;
+    margin-bottom: 20px;
+    background: linear-gradient(0.75turn, #d1d1d1, #fff);
+  }
 `
-const InfoInput = styled.input`
-  border: none;
-  border-bottom: 1px solid #d1d1d1;
-  border-radius: 5px;
-  text-align: left;
-  font-size: 15px;
-  opacity: 0.4;
-  margin-bottom: 20px;
-  background: #f5f5f5;
-`
+
 const InputTag = styled.input`
   display: none;
 `
