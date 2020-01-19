@@ -8,7 +8,6 @@ import HowToTaste from './HowToTaste'
 import EvaluationList from './EvaluationList'
 
 export default function App() {
-  //localStorage.clear()
   let evalDataFromLocalStorage = JSON.parse(localStorage.getItem('evaluations'))
   const [evaluations, setEvaluations] = useState(evalDataFromLocalStorage || [])
   const [navIsOpen, setNavIsOpen] = useState(false)
