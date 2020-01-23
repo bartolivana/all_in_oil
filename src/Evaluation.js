@@ -25,7 +25,7 @@ export default function Evaluation({ evaluation, handleRemoveClick }) {
           className="deleteButton"
           onClick={event =>
             window.confirm(
-              'Are you sure you wish to delete your Evaluation?'
+              'Are you sure you want to delete your Evaluation?'
             ) && handleRemoveClick(evaluation.id)
           }
         />
