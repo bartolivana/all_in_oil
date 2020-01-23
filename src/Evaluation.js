@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import PropTypes from 'prop-types'
 import evaluationFooter from './img/CardFooter.png'
 import bgLogo from './img/AllInOilLogo.png'
 import trash from './img/trashIcon.svg'
@@ -19,27 +18,17 @@ export default function Evaluation({ evaluation, handleRemoveClick }) {
             height: isHidden ? '100px' : '150px'
           }}
         />
-        {/*  <button
-          className="deleteButton"
-          // onClick={event => handleRemoveClick(event, evaluation.id)}
-          onClick={event =>
-            window.confirm(
-              'Are you sure you wish to delete your Evaluation?'
-            ) && handleRemoveClick(evaluation.id)
-          }
-        > */}
+
         <img
           src={trash}
           alt="trash can icon"
           className="deleteButton"
-          // onClick={event => handleRemoveClick(event, evaluation.id)}
           onClick={event =>
             window.confirm(
-              'Are you sure you wish to delete your Evaluation?'
+              'Are you sure you want to delete your Evaluation?'
             ) && handleRemoveClick(evaluation.id)
           }
         />
-        {/* </button> */}
 
         <ImgSubHeader src={evaluationFooter} alt="green watercolor effect" />
         <Title>{evaluation.name}</Title>
@@ -50,14 +39,14 @@ export default function Evaluation({ evaluation, handleRemoveClick }) {
           <TextSubtitle>
             You've tasted {evaluation.name} and generally {evaluation.like} it!
           </TextSubtitle>
-          {evaluation.fragrants.join(', ') === '' || (
+          {evaluation.fragrants.join('') === '' || (
             <>
               <Text> Fragrance nuances:</Text>
               <TextValue>{evaluation.fragrants.join(', ')}</TextValue>
             </>
           )}
 
-          {evaluation.taste.join(', ') === '' || (
+          {evaluation.taste.join('') === '' || (
             <>
               {' '}
               <Text>Taste nuances:</Text>
@@ -104,6 +93,12 @@ export default function Evaluation({ evaluation, handleRemoveClick }) {
                 <TextValue>{evaluation.cultivar}</TextValue>
               </>
             )}
+            {evaluation.personalNotes === ' ' || (
+              <>
+                <Text>Notes:</Text>
+                <PersonalNote>{evaluation.personalNotes}</PersonalNote>
+              </>
+            )}
           </section>
         </>
       )}
@@ -121,6 +116,7 @@ const EvaluationStyled = styled.div`
   opacity: 0.8;
   background-color: #fff;
   position: relative;
+  max-width: 100vw;
 
   section {
     padding: 5px;
@@ -135,8 +131,8 @@ const EvaluationHeader = styled.section`
     position: absolute;
     top: 5px;
     right: 5px;
-    width: 23px;
-    height: 23px;
+    width: 18px;
+    height: 18px;
   }
 `
 const OilImg = styled.img`
@@ -147,13 +143,13 @@ const OilImg = styled.img`
   margin: 5px 10px;
 `
 const ImgSubHeader = styled.img`
+  z-index: -10;
   width: 100%;
+  height: 60px;
   opacity: 0.7;
   position: absolute;
   bottom: 0;
-  height: 60px;
   objectfit: cover;
-  z-index: -10;
 `
 const Title = styled.h2`
   color: #5f5e5c;
@@ -173,15 +169,7 @@ const TextValue = styled.span`
   font-family: 'Amatic SC', sans-serif;
   padding: 5px;
 `
-
-Evaluation.propTypes = {
-  name: PropTypes.string,
-  like: PropTypes.string,
-  fragrants: PropTypes.array,
-  taste: PropTypes.array,
-  producer: PropTypes.string,
-  region: PropTypes.string,
-  vintage: PropTypes.string,
-  classification: PropTypes.string,
-  cultivar: PropTypes.string
-}
+const PersonalNote = styled.span`
+  margin: 0 auto;
+  text-align: center;
+`

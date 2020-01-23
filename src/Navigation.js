@@ -12,9 +12,14 @@ export default function Navigation({ navIsOpen, toggleNavOpen }) {
       <NavToggle onClick={toggleNavOpen}>
         <Burger>
           {navIsOpen ? (
-            <img src={BtnClose} alt="" width="50px" height="50px" />
+            <img
+              src={BtnClose}
+              alt="closing menu button"
+              width="50px"
+              height="50px"
+            />
           ) : (
-            <img src={BtnMenu} alt="" width="50px" height="50px" />
+            <img src={BtnMenu} alt="menu button" width="50px" height="50px" />
           )}
         </Burger>
       </NavToggle>
@@ -55,32 +60,26 @@ const NavigationStyled = styled.nav`
 
 const NavToggle = styled.button`
   position: absolute;
-  transform: translateX(-100%);
-  background: none;
-  border: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: translateX(-100%);
+  background: none;
+  border: 0;
   top: 60px;
   left: -30px;
 `
 
 const Burger = styled.div`
   position: absolute;
-  font-size: 30px;
-  border: 0;
-  cursor: default;
-  background: none;
-  margin: 0;
-  padding: 0;
 `
 
 const NavList = styled.ul`
+  display: flex;
+  flex-direction: column;
   list-style: none;
   margin: 50px;
   padding: 0;
-  display: flex;
-  flex-direction: column;
   height: 100vh;
   width: 200px;
 `

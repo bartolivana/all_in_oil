@@ -16,7 +16,13 @@ export default function EvaluationList({ evaluations, handleRemoveClick }) {
             evaluation.name.toLowerCase().includes(input.toLowerCase()) ||
             evaluation.producer.toLowerCase().includes(input.toLowerCase()) ||
             evaluation.region.toLowerCase().includes(input.toLowerCase()) ||
-            evaluation.cultivar.toLowerCase().includes(input.toLowerCase())
+            evaluation.price.toLowerCase().includes(input.toLowerCase()) ||
+            evaluation.vintage.toLowerCase().includes(input.toLowerCase()) ||
+            evaluation.classification
+              .toLowerCase()
+              .includes(input.toLowerCase()) ||
+            evaluation.cultivar.toLowerCase().includes(input.toLowerCase()) ||
+            evaluation.personalNotes.toLowerCase().includes(input.toLowerCase())
         )
         .map(evaluation => (
           <Evaluation
@@ -32,7 +38,7 @@ export default function EvaluationList({ evaluations, handleRemoveClick }) {
 const ListStyled = styled.div`
   margin: 10px auto 0 0;
   display: grid;
-  gap: 15px;
+  gap: 10px;
   text-align: center;
 `
 

@@ -3,7 +3,7 @@ import { text, boolean } from '@storybook/addon-knobs'
 import Evaluation from './Evaluation'
 
 export default {
-  title: 'Evaluation'
+  title: 'Evaluaton'
 }
 
 export const liked = () => (
@@ -12,9 +12,10 @@ export const liked = () => (
     like={boolean('Like', true)}
   ></Evaluation>
 )
+
 export const disliked = () => (
   <Evaluation
-    name={text('Name', 'Leccino')}
-    like={boolean('Like', false)}
+    data={text('Name', 'Leccino')}
+    like={boolean('Like', true)}
   ></Evaluation>
 )

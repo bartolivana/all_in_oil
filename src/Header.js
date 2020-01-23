@@ -7,7 +7,7 @@ export default function Header() {
       <img
         style={{ width: '100%', height: '50px' }}
         src={headerImg}
-        alt=""
+        alt="green decoration"
       ></img>
     </HeaderStyled>
   )
